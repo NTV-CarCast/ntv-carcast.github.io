@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NTV CarCast · App điện thoại trên Android Auto</title>
+<meta name="description" content="Đưa ứng dụng trên điện thoại lên màn hình Android Auto: chạm, kéo, zoom như app thật; chia đôi, chia 3; toàn màn hình xe.">
+<meta property="og:title" content="NTV CarCast · App điện thoại trên Android Auto">
+<meta property="og:description" content="Đưa ứng dụng trên điện thoại lên màn hình Android Auto: chạm, kéo, zoom như app thật; chia đôi, chia 3; toàn màn hình xe.">
+<meta property="og:image" content="https://ntv-carcast.github.io/screenshots/1.2.0/car-fullscreen.png">
+<meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#ffffff;--bg2:#f5f7fa;--card:#ffffff;--line:#e3e8ef;--text:#0f172a;--text2:#475569;--muted:#8391a7;
+--accent:#0b7cff;--accent-ink:#ffffff;--warn-bg:#fff7e6;--warn-line:#f5a524;--code:#f1f4f8;--shadow:0 1px 2px
+rgba(15,23,42,.05),0 8px 24px rgba(15,23,42,.06);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0f17;--bg2:#111722;--card:#141b27;--line:#243044;--text:#eef2f7;
+--text2:#a9b4c4;--muted:#77849a;--accent:#4c9dff;--accent-ink:#06111f;--warn-bg:#2a2112;--warn-line:#f5a524;
+--code:#1b2433;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,
+"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+img{max-width:100%;height:auto}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.narrow{max-width:760px}
+/* thanh trên */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);
+backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:8px;height:60px}
+@media (max-width:400px){.brand span{display:none}}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:700;
+font-size:17px;margin-right:auto;white-space:nowrap}
+.brand i{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#0b7cff,#22d3ee);display:grid;
+place-items:center;font-style:normal;font-size:16px}
+.top nav{display:flex;gap:2px}
+.top nav a{color:var(--text2);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:15px;
+white-space:nowrap}
+.top nav a:hover,.top nav a[aria-current]{color:var(--text);background:var(--bg2)}
+/* nút */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:12px;
+font-weight:650;font-size:16px;text-decoration:none;border:1px solid var(--line);color:var(--text);
+background:var(--card);transition:transform .12s,filter .12s;min-height:48px}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.small{padding:8px 14px;font-size:14px;min-height:38px}
+/* hero */
+.hero{text-align:center;padding:64px 0 28px}
+.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.08;letter-spacing:-.025em;margin:0 auto 18px;max-width:820px}
+.hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--text2);max-width:680px;margin:0 auto}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:28px 0 10px}
+.fine{color:var(--muted);font-size:14px}
+.frame{margin:40px auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);
+background:#000}
+.frame img{display:block;width:100%}
+/* khối */
+section.block{padding:64px 0}
+section.alt{background:var(--bg2)}
+.eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
+h2.title{font-size:clamp(26px,3.6vw,36px);letter-spacing:-.02em;line-height:1.15;margin:0 0 12px}
+p.lede{color:var(--text2);font-size:18px;margin:0 0 32px;max-width:640px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card .ico{font-size:26px;line-height:1;margin-bottom:12px}
+.card h3{font-size:18px;margin:0 0 6px}
+.card p{margin:0;color:var(--text2);font-size:15.5px}
+/* thư viện ảnh */
+.gallery{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.gallery figure{margin:0}
+.gallery a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000}
+.gallery img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .25s}
+.gallery a:hover img{transform:scale(1.02)}
+.gallery figcaption{font-size:14.5px;color:var(--text2);margin-top:8px}
+.gallery figure.phone a{background:var(--card)}
+.gallery figure.phone img{object-fit:contain;object-position:top}
+/* các bước */
+.steps{counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;
+border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:800;margin-bottom:12px}
+.step h3{font-size:17px;margin:0 0 6px}
+.step p{margin:0;color:var(--text2);font-size:15px}
+.need{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.need span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;
+color:var(--text2)}
+/* hỏi đáp / phiên bản (gập mở) */
+details.qa,details.rel{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0}
+details.qa>summary,details.rel>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;
+gap:12px;font-weight:650}
+details>summary::-webkit-details-marker{display:none}
+details.qa>summary::after,details.rel>summary::after{content:"";margin-left:auto;width:9px;height:9px;flex:none;
+border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);
+transition:transform .15s}
+details[open].qa>summary::after,details[open].rel>summary::after{transform:rotate(225deg)}
+details.qa .a{padding:0 20px 18px;color:var(--text2)}
+/* tải về */
+.download{text-align:center}
+.download .actions{margin-top:20px}
+.sha{font:12.5px ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);word-break:break-all;
+margin-top:14px}
+/* nội dung markdown (hướng dẫn, ghi chú phát hành) */
+.prose h2{font-size:26px;letter-spacing:-.01em;margin:44px 0 12px;scroll-margin-top:76px}
+.prose h3{font-size:19px;margin:30px 0 8px;scroll-margin-top:76px}
+.prose h4{font-size:17px;margin:22px 0 6px}
+.prose p,.prose li{color:var(--text2)}
+.prose strong{color:var(--text)}
+.prose li{margin:4px 0}
+.prose img{border-radius:12px;border:1px solid var(--line)}
+.prose p img{display:inline-block;margin:6px 4px;vertical-align:top}
+.prose hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+.prose code{font:14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--code);border-radius:6px;
+padding:1px 6px;word-break:break-word}
+.prose pre{background:var(--code);border-radius:12px;padding:14px 16px;overflow-x:auto;max-width:100%}
+.prose pre code{background:none;padding:0;word-break:normal;white-space:pre;font-size:13.5px}
+.prose blockquote{margin:16px 0;padding:12px 16px;border-left:4px solid var(--warn-line);background:var(--warn-bg);
+border-radius:0 12px 12px 0}
+.prose blockquote p{margin:4px 0;color:var(--text)}
+.prose .table{overflow-x:auto;margin:14px 0}
+.prose table{border-collapse:collapse;width:100%;font-size:15px}
+.prose th,.prose td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+.prose th{background:var(--bg2)}
+.prose td img{width:100%;margin:0}
+.toc{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:24px 0}
+.toc b{display:block;margin-bottom:6px}
+.toc a{display:inline-block;margin:3px 14px 3px 0;text-decoration:none}
+.page-head{padding:48px 0 8px}
+.page-head h1{font-size:clamp(30px,4.6vw,44px);letter-spacing:-.02em;margin:0 0 8px}
+.page-head p{color:var(--text2);margin:0}
+details.rel>summary .v{font-size:19px;font-weight:800}
+details.rel>summary .badge{font-size:12px;font-weight:700;background:var(--accent);color:var(--accent-ink);
+border-radius:999px;padding:2px 10px}
+details.rel>summary .d{color:var(--muted);font-weight:500;font-size:14px}
+details.rel .body{padding:4px 20px 22px;border-top:1px solid var(--line)}
+details.rel .dl{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:18px 0 4px}
+footer{border-top:1px solid var(--line);padding:32px 0 44px;color:var(--muted);font-size:14px;margin-top:48px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+footer a{color:var(--text2);text-decoration:none}
+@media (max-width:640px){.top nav a.hide-sm{display:none}.top nav a{padding:8px 8px;font-size:14px}
+.top .btn{width:auto;padding:8px 12px}section.block{padding:44px 0}
+.hero{padding:40px 0 16px}.gallery{grid-template-columns:1fr}main .btn{width:100%}.actions{flex-direction:column}
+details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summary,details.rel>summary{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><i>🚗</i><span>NTV CarCast</span></a>
+<nav><a href="index.html" aria-current="page" class="hide-sm">Trang chủ</a><a href="guide.html">Hướng dẫn</a><a href="releases.html">Phiên bản</a></nav>
+<a class="btn primary small" href="downloads/NTV-CarCast-v1.2.0.apk" download>Tải v1.2.0</a>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+<h1>Ứng dụng điện thoại, ngay trên màn hình Android Auto</h1>
+<p class="sub">Xem video, dùng bản đồ, trình duyệt… trên màn hình xe như dùng trên điện thoại. Chia đôi, chia 3, cửa sổ nổi.</p>
+<div class="actions">
+<a class="btn primary" href="downloads/NTV-CarCast-v1.2.0.apk" download>⬇&nbsp; Tải NTV CarCast v1.2.0</a>
+<a class="btn" href="#cai-dat">Cách cài đặt</a>
+</div>
+<p class="fine">APK 655 KB · Android 10+ · cần root + LSPosed</p>
+<div class="frame"><img src="screenshots/1.2.0/car-fullscreen.png" alt="Màn hình xe: NTV CarCast toàn màn hình, dock Android Auto vẫn giữ"></div>
+</div></section>
+
+<section class="block"><div class="wrap">
+<p class="eyebrow">Tính năng</p>
+<h2 class="title">Mọi thứ cần khi lái, trên một màn hình</h2>
+<p class="lede">Dock và bảng bên phải của Android Auto giữ nguyên; NTV CarCast chạy trong vùng ứng dụng như app bình thường.</p>
+<div class="grid"><div class="card"><div class="ico">🚗</div><h3>Mọi app trên màn hình xe</h3><p>Google Maps, Vietmap, Waze, trình duyệt, NewPipe… chạm, kéo, zoom 2 ngón như dùng trên điện thoại.</p></div><div class="card"><div class="ico">🧩</div><h3>Chia màn hình</h3><p>1 app + 1 cửa sổ nổi, chia đôi hoặc chia 3. Kéo để chỉnh tỉ lệ, đổi chỗ 2 app không mất trạng thái.</p></div><div class="card"><div class="ico">🌙</div><h3>Tắt màn hình vẫn chạy</h3><p>Khoá điện thoại, hình và cảm ứng trên xe vẫn hoạt động. Mát máy, đỡ tốn pin (Android 12+).</p></div><div class="card"><div class="ico">🖥️</div><h3>Toàn màn hình xe</h3><p>Trên màn hình dài, bỏ bảng bên phải của Android Auto để app chiếm hết chiều ngang.</p></div><div class="card"><div class="ico">⚡</div><h3>Tự mở, tự báo bản mới</h3><p>Cắm cáp là app tự lên màn hình xe; có bản mới thì báo ngay trên điện thoại và trên xe.</p></div></div>
+</div></section>
+
+<section class="block alt"><div class="wrap">
+<p class="eyebrow">Ảnh chụp</p>
+<h2 class="title">Trên màn hình xe</h2>
+<p class="lede">Chụp trên Desktop Head Unit 1280×720. Chạm vào ảnh để xem cỡ lớn.</p>
+<div class="gallery"><figure><a href="screenshots/1.2.0/car-fullscreen.png" target="_blank" rel="noopener"><img src="screenshots/1.2.0/car-fullscreen.png" alt="Toàn màn hình: app chiếm hết chiều ngang, dock vẫn giữ" loading="lazy"></a><figcaption>Toàn màn hình: app chiếm hết chiều ngang, dock vẫn giữ</figcaption></figure><figure><a href="screenshots/1.2.0/car-default.png" target="_blank" rel="noopener"><img src="screenshots/1.2.0/car-default.png" alt="Mặc định: bảng bên phải của Android Auto vẫn hiện" loading="lazy"></a><figcaption>Mặc định: bảng bên phải của Android Auto vẫn hiện</figcaption></figure><figure><a href="screenshots/1.1.0/car-popup.png" target="_blank" rel="noopener"><img src="screenshots/1.1.0/car-popup.png" alt="Video + Google Maps trong cửa sổ nổi" loading="lazy"></a><figcaption>Video + Google Maps trong cửa sổ nổi</figcaption></figure><figure><a href="screenshots/1.1.0/car-split-2.png" target="_blank" rel="noopener"><img src="screenshots/1.1.0/car-split-2.png" alt="Chia đôi: video + Google Maps" loading="lazy"></a><figcaption>Chia đôi: video + Google Maps</figcaption></figure><figure><a href="screenshots/1.1.0/car-split-3.png" target="_blank" rel="noopener"><img src="screenshots/1.1.0/car-split-3.png" alt="Chia 3: video + 2 app dẫn đường" loading="lazy"></a><figcaption>Chia 3: video + 2 app dẫn đường</figcaption></figure><figure><a href="screenshots/1.1.0/car-menu.png" target="_blank" rel="noopener"><img src="screenshots/1.1.0/car-menu.png" alt="Menu ⋮ trên xe: bố cục, thẻ ứng dụng, DPI" loading="lazy"></a><figcaption>Menu ⋮ trên xe: bố cục, thẻ ứng dụng, DPI</figcaption></figure></div>
+</div></section>
+
+<section class="block" id="cai-dat"><div class="wrap">
+<p class="eyebrow">Cài đặt</p>
+<h2 class="title">Bắt đầu trong 4 bước</h2>
+<div class="need"><span>Android 10+</span><span>Root: Magisk / KernelSU / APatch</span><span>LSPosed</span><span>Android Auto</span></div>
+<div class="steps"><div class="step"><h3>Cài APK</h3><p>Qua máy tính: <code>adb install -i com.android.vending NTV-CarCast.apk</code>, hoặc dùng KingInstaller (chế độ "như Google Play").</p></div><div class="step"><h3>Bật module LSPosed</h3><p>Bật NTV CarCast, tích <b>System Framework</b> và <b>Android Auto</b>, rồi <b>khởi động lại điện thoại</b>.</p></div><div class="step"><h3>Cấp quyền root</h3><p>Mở NTV CarCast, chọn <b>Cho phép</b> (Vĩnh viễn) khi Magisk hỏi. Thấy chip <b>ROOT: OK</b> là xong.</p></div><div class="step"><h3>Dùng trên xe</h3><p>Chọn bố cục và app trên điện thoại, cắm xe, mở <b>NTV CarCast</b> trên Android Auto.</p></div></div>
+<p style="margin-top:22px"><a href="guide.html">Xem hướng dẫn chi tiết →</a></p>
+</div></section>
+
+<section class="block alt" id="hoi-dap"><div class="wrap narrow">
+<p class="eyebrow">Hỏi đáp</p>
+<h2 class="title">Gặp sự cố?</h2>
+<details class="qa"><summary><span>Không thấy NTV CarCast trong Android Auto</span></summary><div class="a">Cài lại bằng <code>adb install -i com.android.vending …</code>; kiểm tra scope <strong>Android Auto</strong> trong LSPosed; khởi động lại Android Auto</div></details><details class="qa"><summary><span>Màn hình xe báo "Cần quyền root"</span></summary><div class="a">Cấp root cho NTV CarCast trong <strong>Magisk → Superuser</strong> (xem bước 3)</div></details><details class="qa"><summary><span>Tắt màn hình điện thoại thì hình đứng / không chạm được</span></summary><div class="a">Scope <strong>System Framework</strong> chưa bật, hoặc chưa khởi động lại máy sau khi bật/cập nhật</div></details><details class="qa"><summary><span>Chia 3: ô phải-dưới đứng hình khi tắt màn hình điện thoại</span></summary><div class="a">Khởi động lại máy sau khi cập nhật (hook hệ thống cần nhận ô thứ 3)</div></details><details class="qa"><summary><span>Bật <strong>Toàn màn hình</strong> mà bảng bên phải vẫn hiện</span></summary><div class="a">Bấm <strong>Khởi động lại Android Auto</strong> (tuỳ chọn chỉ áp dụng khi Android Auto bắt đầu phiên); kiểm tra scope <strong>Android Auto</strong> trong LSPosed. Màn hình hẹp (không có bảng bên phải) thì tuỳ chọn không có tác dụng. Log <code>[NTVC Session] ... not found / not recognized</code> = bản Android Auto này đổi layout</div></details><details class="qa"><summary><span>Bật <strong>Tự mở</strong> mà app không tự lên</span></summary><div class="a">Giống dòng trên: khởi động lại Android Auto, kiểm tra scope <strong>Android Auto</strong>. Log <code>[NTVC Session] auto-launch requested</code> mà app vẫn không mở = bản Android Auto này đổi cách mở app</div></details><details class="qa"><summary><span>Zoom 2 ngón không ăn</span></summary><div class="a">Màn hình xe chỉ có 1 điểm chạm; dùng nút +/− của app</div></details><details class="qa"><summary><span>Quay lại thì app trên xe bị mở lại từ đầu</span></summary><div class="a">Kiểm tra có thông báo "NTV CarCast đang giữ ứng dụng trên xe"; nếu không có, mở app trên điện thoại để cấp lại root</div></details><details class="qa"><summary><span>Màn hình đen với một số app</span></summary><div class="a">App dùng bảo vệ nội dung (DRM / chặn chụp màn hình); đây là giới hạn của chính app đó</div></details><details class="qa"><summary><span>YouTube</span></summary><div class="a">App YouTube chính thức không phát trên màn hình ảo. Dùng <strong>NewPipe</strong>, hoặc xem trong trình duyệt <strong>không bật fullscreen</strong> (Brave/Chrome bị lệch video khi fullscreen, đây là lỗi của Chromium)</div></details><details class="qa"><summary><span>Máy nóng</span></summary><div class="a">Tắt màn hình điện thoại khi cast; thu ứng dụng nổi thành bong bóng; giữ tuỳ chọn "Giới hạn 30 fps"</div></details>
+<p style="margin-top:18px">Không thấy câu trả lời? <a href="#gop-y">Gửi báo lỗi</a>.</p>
+</div></section>
+
+<section class="block" id="gop-y"><div class="wrap narrow" style="text-align:center">
+<p class="eyebrow">Báo lỗi / Góp ý</p>
+<h2 class="title">Gặp lỗi hay muốn góp ý?</h2>
+<p class="lede" style="margin:0 auto">Gửi qua form, chỉ mất một phút. Ghi kèm phiên bản app, điện thoại và Android
+để mình tìm lỗi nhanh hơn.</p>
+<div class="actions"><a class="btn primary" href="https://forms.gle/XQfBQJuNHZzoBCHL6" target="_blank" rel="noopener">💬&nbsp; Mở form góp ý</a></div>
+</div></section>
+
+<section class="block download alt" id="tai-ve"><div class="wrap narrow">
+<h2 class="title">Tải NTV CarCast</h2>
+<p class="lede" style="margin:0 auto">Bản mới nhất v1.2.0. Cài đè lên bản cũ, không cần gỡ.</p>
+<div class="actions"><a class="btn primary" href="downloads/NTV-CarCast-v1.2.0.apk" download>⬇&nbsp; Tải APK v1.2.0</a>
+<a class="btn" href="releases.html">Có gì mới</a></div>
+<div class="sha">SHA-256 777f664b17cafdb3239e678ccd5b12a0306838a808261986f228d91cf85d60aa</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<span>NTV CarCast v1.2.0 · Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.
+<b>Không thao tác khi đang lái xe.</b></span>
+<span><a href="guide.html">Hướng dẫn</a> · <a href="releases.html">Phiên bản</a> ·
+<a href="https://forms.gle/XQfBQJuNHZzoBCHL6" target="_blank" rel="noopener">Báo lỗi / Góp ý</a></span>
+</div></footer>
+</body>
+</html>

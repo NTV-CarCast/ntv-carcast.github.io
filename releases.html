@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Các phiên bản · NTV CarCast</title>
+<meta name="description" content="Đưa ứng dụng trên điện thoại lên màn hình Android Auto: chạm, kéo, zoom như app thật; chia đôi, chia 3; toàn màn hình xe.">
+<meta property="og:title" content="Các phiên bản · NTV CarCast">
+<meta property="og:description" content="Đưa ứng dụng trên điện thoại lên màn hình Android Auto: chạm, kéo, zoom như app thật; chia đôi, chia 3; toàn màn hình xe.">
+<meta property="og:image" content="https://ntv-carcast.github.io/screenshots/1.2.0/car-fullscreen.png">
+<meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#ffffff;--bg2:#f5f7fa;--card:#ffffff;--line:#e3e8ef;--text:#0f172a;--text2:#475569;--muted:#8391a7;
+--accent:#0b7cff;--accent-ink:#ffffff;--warn-bg:#fff7e6;--warn-line:#f5a524;--code:#f1f4f8;--shadow:0 1px 2px
+rgba(15,23,42,.05),0 8px 24px rgba(15,23,42,.06);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0f17;--bg2:#111722;--card:#141b27;--line:#243044;--text:#eef2f7;
+--text2:#a9b4c4;--muted:#77849a;--accent:#4c9dff;--accent-ink:#06111f;--warn-bg:#2a2112;--warn-line:#f5a524;
+--code:#1b2433;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,
+"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+img{max-width:100%;height:auto}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.narrow{max-width:760px}
+/* thanh trên */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);
+backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:8px;height:60px}
+@media (max-width:400px){.brand span{display:none}}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:700;
+font-size:17px;margin-right:auto;white-space:nowrap}
+.brand i{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#0b7cff,#22d3ee);display:grid;
+place-items:center;font-style:normal;font-size:16px}
+.top nav{display:flex;gap:2px}
+.top nav a{color:var(--text2);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:15px;
+white-space:nowrap}
+.top nav a:hover,.top nav a[aria-current]{color:var(--text);background:var(--bg2)}
+/* nút */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:12px;
+font-weight:650;font-size:16px;text-decoration:none;border:1px solid var(--line);color:var(--text);
+background:var(--card);transition:transform .12s,filter .12s;min-height:48px}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.small{padding:8px 14px;font-size:14px;min-height:38px}
+/* hero */
+.hero{text-align:center;padding:64px 0 28px}
+.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.08;letter-spacing:-.025em;margin:0 auto 18px;max-width:820px}
+.hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--text2);max-width:680px;margin:0 auto}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:28px 0 10px}
+.fine{color:var(--muted);font-size:14px}
+.frame{margin:40px auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);
+background:#000}
+.frame img{display:block;width:100%}
+/* khối */
+section.block{padding:64px 0}
+section.alt{background:var(--bg2)}
+.eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
+h2.title{font-size:clamp(26px,3.6vw,36px);letter-spacing:-.02em;line-height:1.15;margin:0 0 12px}
+p.lede{color:var(--text2);font-size:18px;margin:0 0 32px;max-width:640px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card .ico{font-size:26px;line-height:1;margin-bottom:12px}
+.card h3{font-size:18px;margin:0 0 6px}
+.card p{margin:0;color:var(--text2);font-size:15.5px}
+/* thư viện ảnh */
+.gallery{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.gallery figure{margin:0}
+.gallery a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000}
+.gallery img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .25s}
+.gallery a:hover img{transform:scale(1.02)}
+.gallery figcaption{font-size:14.5px;color:var(--text2);margin-top:8px}
+.gallery figure.phone a{background:var(--card)}
+.gallery figure.phone img{object-fit:contain;object-position:top}
+/* các bước */
+.steps{counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;
+border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:800;margin-bottom:12px}
+.step h3{font-size:17px;margin:0 0 6px}
+.step p{margin:0;color:var(--text2);font-size:15px}
+.need{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.need span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;
+color:var(--text2)}
+/* hỏi đáp / phiên bản (gập mở) */
+details.qa,details.rel{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0}
+details.qa>summary,details.rel>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;
+gap:12px;font-weight:650}
+details>summary::-webkit-details-marker{display:none}
+details.qa>summary::after,details.rel>summary::after{content:"";margin-left:auto;width:9px;height:9px;flex:none;
+border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);
+transition:transform .15s}
+details[open].qa>summary::after,details[open].rel>summary::after{transform:rotate(225deg)}
+details.qa .a{padding:0 20px 18px;color:var(--text2)}
+/* tải về */
+.download{text-align:center}
+.download .actions{margin-top:20px}
+.sha{font:12.5px ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);word-break:break-all;
+margin-top:14px}
+/* nội dung markdown (hướng dẫn, ghi chú phát hành) */
+.prose h2{font-size:26px;letter-spacing:-.01em;margin:44px 0 12px;scroll-margin-top:76px}
+.prose h3{font-size:19px;margin:30px 0 8px;scroll-margin-top:76px}
+.prose h4{font-size:17px;margin:22px 0 6px}
+.prose p,.prose li{color:var(--text2)}
+.prose strong{color:var(--text)}
+.prose li{margin:4px 0}
+.prose img{border-radius:12px;border:1px solid var(--line)}
+.prose p img{display:inline-block;margin:6px 4px;vertical-align:top}
+.prose hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+.prose code{font:14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--code);border-radius:6px;
+padding:1px 6px;word-break:break-word}
+.prose pre{background:var(--code);border-radius:12px;padding:14px 16px;overflow-x:auto;max-width:100%}
+.prose pre code{background:none;padding:0;word-break:normal;white-space:pre;font-size:13.5px}
+.prose blockquote{margin:16px 0;padding:12px 16px;border-left:4px solid var(--warn-line);background:var(--warn-bg);
+border-radius:0 12px 12px 0}
+.prose blockquote p{margin:4px 0;color:var(--text)}
+.prose .table{overflow-x:auto;margin:14px 0}
+.prose table{border-collapse:collapse;width:100%;font-size:15px}
+.prose th,.prose td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+.prose th{background:var(--bg2)}
+.prose td img{width:100%;margin:0}
+.toc{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:24px 0}
+.toc b{display:block;margin-bottom:6px}
+.toc a{display:inline-block;margin:3px 14px 3px 0;text-decoration:none}
+.page-head{padding:48px 0 8px}
+.page-head h1{font-size:clamp(30px,4.6vw,44px);letter-spacing:-.02em;margin:0 0 8px}
+.page-head p{color:var(--text2);margin:0}
+details.rel>summary .v{font-size:19px;font-weight:800}
+details.rel>summary .badge{font-size:12px;font-weight:700;background:var(--accent);color:var(--accent-ink);
+border-radius:999px;padding:2px 10px}
+details.rel>summary .d{color:var(--muted);font-weight:500;font-size:14px}
+details.rel .body{padding:4px 20px 22px;border-top:1px solid var(--line)}
+details.rel .dl{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:18px 0 4px}
+footer{border-top:1px solid var(--line);padding:32px 0 44px;color:var(--muted);font-size:14px;margin-top:48px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+footer a{color:var(--text2);text-decoration:none}
+@media (max-width:640px){.top nav a.hide-sm{display:none}.top nav a{padding:8px 8px;font-size:14px}
+.top .btn{width:auto;padding:8px 12px}section.block{padding:44px 0}
+.hero{padding:40px 0 16px}.gallery{grid-template-columns:1fr}main .btn{width:100%}.actions{flex-direction:column}
+details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summary,details.rel>summary{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="index.html"><i>🚗</i><span>NTV CarCast</span></a>
+<nav><a href="index.html" class="hide-sm">Trang chủ</a><a href="guide.html">Hướng dẫn</a><a href="releases.html" aria-current="page">Phiên bản</a></nav>
+<a class="btn primary small" href="downloads/NTV-CarCast-v1.2.0.apk" download>Tải v1.2.0</a>
+</div></header>
+
+<main><div class="wrap narrow">
+<div class="page-head"><h1>Các phiên bản</h1>
+<p>Cập nhật: tải bản mới, cài đè lên bản cũ (cài đặt vẫn giữ), rồi khởi động lại điện thoại.</p></div>
+<div style="margin-top:24px"><details class="rel" id="v1.2.0" open><summary><span class="v">v1.2.0</span><span class="badge">Mới nhất</span><span class="d">13/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn primary small" href="downloads/NTV-CarCast-v1.2.0.apk" download>⬇&nbsp; Tải APK v1.2.0</a><span class="fine">655 KB</span></div><p>Bản này có 3 thứ mới: <strong>app chiếm hết màn hình xe</strong>, <strong>cắm cáp là app tự mở</strong>, và <strong>app tự báo khi có bản mới</strong>.</p>
+<blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root + LSPosed</strong> như cũ. Cập nhật xong nhớ <strong>khởi động lại điện thoại</strong>.</p></blockquote>
+<h2 id="v1.2.0-co-gi-moi">Có gì mới</h2>
+<h3 id="v1.2.0-1-toan-man-hinh-bo-bang-ben-phai">1. Toàn màn hình: bỏ bảng bên phải</h3>
+<p>Trên màn hình xe dài, Android Auto luôn chừa một bảng bên phải (nhạc, thông báo, bản đồ). Giờ bạn bỏ được bảng đó, app chiếm hết chiều ngang. Dock bên trái vẫn giữ nguyên.</p>
+<div class="table"><table><thead><tr><th>Trước</th><th>Sau khi bật Toàn màn hình</th></tr></thead><tbody><tr><td><img src="screenshots/1.2.0/car-default.png" alt="Mặc định: app ở giữa, bảng bên phải vẫn còn" loading="lazy"></td><td><img src="screenshots/1.2.0/car-fullscreen.png" alt="Toàn màn hình: app chiếm hết chiều ngang" loading="lazy"></td></tr></tbody></table></div>
+<ul><li>Áp dụng cho <strong>mọi app</strong> trên Android Auto (Maps, Waze… cũng rộng ra), không riêng NTV CarCast.</li><li>Có tác dụng <strong>từ lần kết nối sau</strong>. Muốn thấy ngay thì bấm <strong>Khởi động lại Android Auto</strong> trong app.</li><li>Màn hình xe nhỏ (vốn không có bảng bên phải) thì không có gì thay đổi.</li></ul>
+<h3 id="v1.2.0-2-cam-cap-la-ntv-carcast-tu-mo">2. Cắm cáp là NTV CarCast tự mở</h3>
+<p>Bật <strong>Tự mở NTV CarCast khi kết nối Android Auto</strong>, cắm cáp xong chờ vài giây là app tự lên màn hình xe, khỏi phải bấm.</p>
+<h3 id="v1.2.0-3-tu-bao-khi-co-ban-moi">3. Tự báo khi có bản mới</h3>
+<ul><li>Mỗi lần mở app, NTV CarCast hỏi GitHub xem có bản mới không (tối đa 12 tiếng một lần).</li><li>Có bản mới thì <strong>báo trên điện thoại</strong> (có nút mở trang tải) và <strong>báo luôn trên màn hình xe</strong>.</li><li>Không muốn thì tắt <strong>Kiểm tra cập nhật khi mở app</strong>. Muốn kiểm tra liền thì bấm <strong>Kiểm tra cập nhật ngay</strong>.</li></ul>
+<p>Cả 3 tuỳ chọn nằm trong <strong>Tuỳ chọn khác</strong> của app trên điện thoại:</p>
+<p>
+  <img src="screenshots/1.2.0/phone-options.png" width="300" alt="Tuỳ chọn khác: tự mở, toàn màn hình, kiểm tra cập nhật">
+</p>
+<h2 id="v1.2.0-thay-doi-khac">Thay đổi khác</h2>
+<ul><li><strong>Bỏ "bong bóng tốc độ"</strong> của Wyn / VietMap Live / Waze (bản thử nghiệm). Không làm tiếp nên gỡ luôn cho gọn.</li><li>App giờ xin thêm <strong>quyền Internet</strong>, chỉ để kiểm tra bản mới trên GitHub. Không gửi dữ liệu gì đi.</li><li>Dọn code thừa, viết lại hướng dẫn cài đặt và tài liệu cho dễ đọc.</li></ul>
+<h2 id="v1.2.0-cap-nhat-tu-v1-1-0">Cập nhật từ v1.1.0</h2>
+<ol><li>Tải <strong>NTV-CarCast-v1.2.0.apk</strong> bằng nút <strong>Tải APK</strong> của bản này.</li><li>Cài đè lên bản cũ, <strong>không cần gỡ</strong> (cài đặt cũ vẫn còn):<pre><code class="lang-bash">adb install -r -i com.android.vending NTV-CarCast-v1.2.0.apk</code></pre>
+<p>Hoặc cài bằng KingInstaller như lần đầu.</p></li><li>Mở <strong>LSPosed</strong> xem NTV CarCast vẫn tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại.</strong></li></ol>
+<p>Cài lần đầu: xem <a href="guide.html#cai-dat">hướng dẫn trong README</a>.</p>
+<h2 id="v1.2.0-luu-y">Lưu ý</h2>
+<ul><li>Toàn màn hình và Tự mở mới thử trên Desktop Head Unit (màn hình 1280×720) với Android Auto 17.8. Xe thật hoặc Android Auto bản khác có thể không chạy. Nếu vậy app chỉ bỏ qua tính năng đó, không làm hỏng Android Auto.</li><li>Xe kết nối chậm thì có thể Android Auto mở app khác đè lên sau khi NTV CarCast tự mở.</li><li><strong>Không thao tác trên app khi đang lái xe.</strong></li></ul>
+<h2 id="v1.2.0-yeu-cau">Yêu cầu</h2>
+<div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Desktop Head Unit · Android Auto 17.8</td></tr></tbody></table></div>
+<h2 id="v1.2.0-kiem-tra-file">Kiểm tra file</h2>
+<pre><code>SHA-256  777f664b17cafdb3239e678ccd5b12a0306838a808261986f228d91cf85d60aa  NTV-CarCast-v1.2.0.apk</code></pre>
+<hr>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel" id="v1.1.0"><summary><span class="v">v1.1.0</span><span class="d">13/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn primary small" href="downloads/NTV-CarCast-v1.1.0.apk" download>⬇&nbsp; Tải APK v1.1.0</a><span class="fine">646 KB</span></div><p>Bản này thêm <strong>chia màn hình 2–3 app</strong>, <strong>menu mới chọn bố cục bằng hình</strong>, và sửa lỗi <strong>app nổi bị phóng to sai</strong>.</p>
+<blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root (Magisk / KernelSU / APatch) + LSPosed</strong>. Sau khi cập nhật phải <strong>khởi động lại điện thoại</strong> (xem mục "Cập nhật từ v1.0.0").</p></blockquote>
+<h2 id="v1.1.0-anh-chup-man-hinh">Ảnh chụp màn hình</h2>
+<div class="table"><table><thead><tr><th>Chính + nổi</th><th>Thu thành bong bóng</th></tr></thead><tbody><tr><td><img src="screenshots/1.1.0/car-popup.png" alt="Video toàn màn hình, Google Maps dẫn đường trong cửa sổ nổi" loading="lazy"></td><td><img src="screenshots/1.1.0/car-bubble.png" alt="Cửa sổ nổi thu thành bong bóng" loading="lazy"></td></tr><tr><td><strong>Chia đôi</strong></td><td><strong>Chia 3</strong></td></tr><tr><td><img src="screenshots/1.1.0/car-split-2.png" alt="Chia đôi: video + Google Maps" loading="lazy"></td><td><img src="screenshots/1.1.0/car-split-3.png" alt="Chia 3: video + 2 app dẫn đường" loading="lazy"></td></tr></tbody></table></div>
+<p><strong>Menu ⋮ mới</strong></p>
+<p><img src="screenshots/1.1.0/car-menu.png" alt="Menu ⋮: bố cục, thẻ ứng dụng, DPI" loading="lazy"></p>
+<p><strong>Ứng dụng trên điện thoại</strong> (thiết kế lại)</p>
+<p>
+  <img src="screenshots/1.1.0/phone-main.png" width="280" alt="Ứng dụng trên điện thoại: bố cục, ứng dụng từng ô, DPI">
+  &amp;nbsp;
+  <img src="screenshots/1.1.0/phone-options.png" width="280" alt="Ứng dụng trên điện thoại khi mở Tuỳ chọn khác">
+</p>
+<h2 id="v1.1.0-moi">Mới</h2>
+<ul><li><strong>3 bố cục, chọn bằng hình</strong> trong menu ⋮:<ul><li><strong>Chính + nổi</strong>: 1 app toàn màn hình + 1 app dạng cửa sổ nổi hoặc bong bóng (như trước).</li><li><strong>Chia đôi</strong>: 2 app cạnh nhau.</li><li><strong>Chia 3</strong>: 1 app bên trái + 2 app xếp trên/dưới bên phải.</li></ul>
+<p>Ở chia đôi / chia 3, kéo nút ⋮ tròn ở giữa để chỉnh tỉ lệ, chạm vào nút đó để mở menu. Bố cục được nhớ cho lần mở sau.</p></li><li><strong>Menu gọn hơn</strong>: mỗi app có một thẻ riêng.<ul><li>Chạm vào thẻ để chọn app khác.</li><li><strong>↻ Mở lại</strong>: mở lại app đó.</li><li><strong>🔍 Zoom</strong>: phóng to một vùng của app.</li><li><strong>⇄</strong> giữa 2 thẻ: đổi chỗ 2 app. App giữ nguyên trạng thái, vd. Google Maps không mất dẫn đường.</li></ul></li><li><strong>Zoom một vùng</strong>: chỉ hiện một phần app và phóng to lên, vd. đồng hồ tốc độ. Kéo 1 ngón để di chuyển, chụm/mở 2 ngón để phóng.</li><li><strong>Chỉnh DPI ngay trên xe</strong>, có chú thích:<ul><li>Số <strong>nhỏ</strong> (120, 160): chữ nhỏ, thấy được nhiều nội dung hơn.</li><li>Số <strong>lớn</strong> (200, 240): chữ to, dễ bấm khi lái.</li></ul></li><li><strong>Tự đóng app khi ngắt kết nối Android Auto</strong> (rút cáp / tắt xe). Khi chỉ chuyển sang màn hình khác của Android Auto, app vẫn được giữ 10 phút như trước để không mất dẫn đường.</li></ul>
+<h2 id="v1.1.0-sua-loi">Sửa lỗi</h2>
+<ul><li><strong>App nổi bị phóng to sai, chạm không ăn.</strong> Ô nổi bị giữ chế độ zoom cũ dù đã tắt; giờ zoom của từng ô luôn khớp với lựa chọn.</li><li><strong>Kéo ◢ đổi kích thước làm app nổi phóng to.</strong> Trong lúc kéo (◢ hoặc thanh chia), hình giữ đúng tỉ lệ, không bị kéo giãn. Thả tay mới cập nhật kích thước, chỉ 1 lần, nên kéo mượt hơn.</li><li><strong>Đổi chỗ 2 app có lúc bị đứng hình</strong> ở khung cũ: đã sửa.</li><li><strong>Zoom 2 ngón</strong>: phóng quanh điểm giữa 2 ngón. Nhấc 1 ngón rồi kéo tiếp không còn bị nhảy. Kéo 2 ngón giờ di chuyển được vùng đang zoom.</li></ul>
+<h2 id="v1.1.0-thay-doi">Thay đổi</h2>
+<ul><li><strong>Thiết kế lại ứng dụng trên điện thoại</strong>, cùng cách bố trí với menu trên xe:<ul><li>chọn <strong>bố cục bằng hình</strong>; đổi bố cục trên điện thoại thì xe đổi theo ngay khi đã đủ app;</li><li><strong>mỗi ô một thẻ</strong> (chạm để chọn app), nút <strong>⇅</strong> đổi chỗ 2 app (trên xe giữ nguyên trạng thái app);</li><li><strong>DPI</strong> và nút <strong>Tắt màn hình điện thoại</strong> ngay trên màn hình chính;</li><li>các công tắc ít dùng gom vào <strong>Tuỳ chọn khác</strong>, hướng dẫn gom vào <strong>Hướng dẫn kết nối</strong>, cả hai gập sẵn (hướng dẫn tự mở khi chưa có root);</li><li>bỏ hàng "Gần đây", lựa chọn "Khi bắt đầu cast" (app tự nhớ trạng thái lần trước) và các đoạn chú thích dài.</li></ul></li><li><strong>Bỏ màn Cài đặt trên xe.</strong> Chọn app, DPI và hướng dẫn đều nằm trong menu ⋮.</li><li><strong>Bỏ tuỳ chọn "Vị trí nút điều khiển"</strong> (cả trên xe và trên điện thoại). Nút ⋮ cố định ở góc trên bên phải.</li><li>Bỏ các nút "Quay lại trong app", "Trở về Android Auto" và "Đóng ứng dụng nổi" trong menu. Cửa sổ nổi có sẵn nút — (thu thành bong bóng) và ✕ (đóng); "Đóng NTV CarCast" vẫn ở mục Hệ thống.</li><li>Chọn lại đúng app đang chạy ở một ô sẽ không mở lại app đó. Đổi sang app khác thì zoom của ô đó tự tắt.</li></ul>
+<h2 id="v1.1.0-cap-nhat-tu-v1-0-0">Cập nhật từ v1.0.0</h2>
+<ol><li>Cài đè: <code>adb install -r -i com.android.vending NTV-CarCast-v1.1.0.apk</code>. Cùng package, cùng chữ ký, cài đặt cũ được giữ nguyên.</li><li>Mở <strong>LSPosed</strong> và kiểm tra NTV CarCast vẫn tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại.</strong> Cần làm để hook hệ thống nhận ô thứ 3 của Chia 3; nếu không, ô thứ 3 có thể ngừng chạy khi tắt màn hình điện thoại.</li></ol>
+<p>Cài mới từ đầu: xem <a href="guide.html#cai-dat">README</a>.</p>
+<h2 id="v1.1.0-yeu-cau">Yêu cầu</h2>
+<div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Desktop Head Unit</td></tr></tbody></table></div>
+<h2 id="v1.1.0-gioi-han-da-biet">Giới hạn đã biết</h2>
+<ul><li><strong>Chia 3 = 3 app cùng vẽ</strong>: máy nóng và tốn pin hơn. Nên tắt màn hình điện thoại khi dùng lâu.</li><li><strong>Zoom 2 ngón</strong> chỉ hoạt động nếu màn hình xe có cảm ứng đa điểm. Nhiều xe chỉ có 1 điểm chạm; khi đó dùng nút +/− của app (vd. Google Maps).</li><li>Zoom một vùng là phóng to hình đã vẽ, nên chữ hơi mờ ở mức zoom cao.</li><li>App chưa qua bước thiết lập lần đầu (vd. Chrome mới cài) có thể hiện màn hình trống; mở app đó trên điện thoại một lần trước.</li><li><strong>YouTube</strong> chính thức không phát trên màn hình ảo: dùng NewPipe hoặc trình duyệt ở chế độ máy tính.</li><li>App dùng bảo vệ nội dung (DRM, chặn chụp màn hình) sẽ hiện màn hình đen.</li><li>Chưa thử trên xe thật và Android 12–14.</li><li><strong>Không thao tác trên app khi đang lái xe.</strong></li></ul>
+<h2 id="v1.1.0-kiem-tra-file">Kiểm tra file</h2>
+<pre><code>SHA-256  2944658a7a53e21c44ff28a454bf90e5b7fddbc08d31cdfcdb140450f9bb9c14  NTV-CarCast-v1.1.0.apk</code></pre>
+<hr>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel" id="v1.0.0"><summary><span class="v">v1.0.0</span><span class="d">10/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn primary small" href="downloads/NTV-CarCast-v1.0.0.apk" download>⬇&nbsp; Tải APK v1.0.0</a><span class="fine">622 KB</span></div><p>Bản chính thức đầu tiên, tập trung vào <strong>ổn định và mát máy</strong>. Bàn phím và giọng nói riêng của NTV CarCast đã được gỡ: app được cast đã có sẵn tìm kiếm của nó (🎤 của Google Maps, bàn phím của Brave…), dùng trực tiếp trên màn hình xe.</p>
+<blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root (Magisk / KernelSU / APatch) + LSPosed</strong>.</p></blockquote>
+<h2 id="v1.0.0-moi">Mới</h2>
+<ul><li><strong>Phím của xe điều khiển app</strong>: D-pad, núm xoay và nút OK của xe gửi thẳng vào app đang cast. Nút Back của xe vẫn hoạt động như Android Auto. Bật/tắt trong cài đặt.</li><li><strong>Tự thu cửa sổ nổi thành bong bóng</strong> sau 5 phút không chạm, để đỡ tốn pin. Bật/tắt trong cài đặt.</li><li><strong>Tự tắt màn hình điện thoại khi máy quá nóng</strong>: tối đa 1 lần mỗi 10 phút. Bật/tắt trong cài đặt.</li><li><strong>"Mở lại <app>"</strong> trong menu ⋮. App đang cast không còn hiện trong Recents của điện thoại, nên bấm "Đóng tất cả" trên điện thoại không làm mất màn hình trên xe.</li></ul>
+<h2 id="v1.0.0-thay-doi">Thay đổi</h2>
+<ul><li><strong>Gỡ bàn phím xe và giọng nói của NTV CarCast</strong>, gồm nút ⌨ / 🎤, lịch sử tìm kiếm và mục cài đặt liên quan. Hãy dùng tìm kiếm / giọng nói có sẵn trong app (vd. 🎤 trong Google Maps).<ul><li>Bàn phím trên màn hình ảo không ổn định: Samsung Keyboard bị crash, Gboard bị treo.</li><li>Giọng nói không tin cậy được: Android chặn micro khi app chạy nền, và Google Maps bỏ qua lệnh khi điện thoại đang khoá.</li></ul></li><li><strong>Không còn xin quyền micro.</strong> App chỉ cần quyền thông báo.</li><li>Danh sách chọn app trên xe không còn ô gõ chữ; chạm chọn trực tiếp trong danh sách.</li><li>Lệnh root chạy ổn định hơn, không còn lỗi lệnh mở app thỉnh thoảng thất bại.</li></ul>
+<h2 id="v1.0.0-cap-nhat-tu-v0-2-0">Cập nhật từ v0.2.0</h2>
+<ol><li>Cài đè: <code>adb install -r -i com.android.vending NTV-CarCast-v1.0.0.apk</code>. Cùng package và cùng chữ ký, nên không cần gỡ bản cũ; cài đặt của bạn được giữ nguyên.</li><li>Mở <strong>LSPosed</strong> và kiểm tra NTV CarCast vẫn tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại.</strong></li></ol>
+<p>Cài mới từ đầu: xem <a href="../README.md">README</a>.</p>
+<h2 id="v1.0.0-yeu-cau">Yêu cầu</h2>
+<div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Desktop Head Unit</td></tr></tbody></table></div>
+<h2 id="v1.0.0-gioi-han-da-biet">Giới hạn đã biết</h2>
+<ul><li><strong>YouTube</strong>: app YouTube chính thức không phát video trên màn hình ảo. Dùng <strong>NewPipe</strong>, hoặc xem bằng trình duyệt ở <strong>chế độ máy tính (desktop)</strong>.</li><li>App dùng bảo vệ nội dung (DRM, chặn chụp màn hình) sẽ hiện màn hình đen.</li><li>Nếu NTV CarCast vừa bị tắt hẳn (sau khi cập nhật), lần chạm đầu vào biểu tượng có thể mở Google Maps của Android Auto. Chạm lần nữa để mở NTV CarCast.</li><li>Phím của xe mới thử bằng mã, chưa thử trên xe thật. Chưa thử trên Android 12–14.</li><li><strong>Không thao tác trên app khi đang lái xe.</strong></li></ul>
+<h2 id="v1.0.0-kiem-tra-file">Kiểm tra file</h2>
+<pre><code>SHA-256  5cd75f3fc0bf2af3d8f4aabe3a2b9a7826d9f080d41502aef1ee872b19fcc007  NTV-CarCast-v1.0.0.apk</code></pre>
+<hr>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel" id="v0.2.0"><summary><span class="v">v0.2.0</span><span class="d">10/10/2026</span></summary><div class="body prose"><p>Bản phát hành đầu tiên của <strong>NTV CarCast</strong>: đưa một ứng dụng trên điện thoại (Google Maps, VietMap, Waze, trình duyệt, NewPipe…) lên màn hình Android Auto và dùng như app thật.</p>
+<blockquote><p>⚠️ Cần <strong>điện thoại đã root (Magisk / KernelSU / APatch) + LSPosed</strong>. Không dùng được trên máy chưa root.</p></blockquote>
+<h2 id="v0.2.0-co-gi-trong-ban-nay">Có gì trong bản này</h2>
+<ul><li><strong>Cast 1 ứng dụng</strong> lên Android Auto. App nằm ở vùng ứng dụng (~2/3 màn hình); dock và bảng thông báo, nhạc, Waze của Android Auto vẫn như bình thường.</li><li><strong>Chạm theo thời gian thực</strong>: kéo bản đồ theo ngón tay, zoom 2 ngón, giữ lâu.</li><li><strong>Tìm kiếm trên xe</strong>: ⌨ bàn phím xe hoặc 🎤 giọng nói (Tiếng Việt / English). Gõ thẳng vào ô tìm kiếm của app (hỗ trợ tiếng Việt có dấu), hoặc gửi <strong>Tìm địa điểm</strong> / <strong>Dẫn đường</strong> cho app bản đồ.</li><li><strong>Tắt màn hình điện thoại vẫn chạy</strong>: hình và cảm ứng trên xe không bị ảnh hưởng (Android 12+).</li><li><strong>Không mất trạng thái</strong> khi chuyển sang màn hình Android Auto khác rồi quay lại (vd. Google Maps vẫn giữ dẫn đường).</li><li><strong>Ứng dụng nổi</strong>: chạy thêm một app đè lên app chính dạng cửa sổ (kéo, đổi kích thước) hoặc bong bóng (tạm dừng, không tốn pin); đổi chỗ với app chính bằng 1 chạm.</li><li><strong>Chuyển nhanh</strong> giữa các app dùng gần đây từ menu ⋮ trên xe.</li><li><strong>Mát máy, đỡ tốn pin</strong>: giới hạn 30 fps (Android 14+, tắt được), tạm dừng vẽ khi mở menu cài đặt, cảnh báo khi máy nóng và tự thu ứng dụng nổi khi máy quá nóng.</li><li>Giao diện <strong>Tiếng Việt / English</strong>.</li></ul>
+<h2 id="v0.2.0-cai-dat-nhanh">Cài đặt nhanh</h2>
+<ol><li>Cài APK, đánh dấu là cài từ Play Store để Android Auto nhận app: <code>adb install -i com.android.vending NTV-CarCast-v0.2.0.apk</code> (hoặc dùng KingInstaller).</li><li><strong>LSPosed → Modules → NTV CarCast</strong>: bật module, tích <strong>System Framework</strong> + <strong>Android Auto</strong>, rồi <strong>khởi động lại máy</strong>.</li><li>Mở NTV CarCast trên điện thoại → Magisk hỏi quyền root → <strong>Cho phép vĩnh viễn</strong>.</li><li>Chọn <strong>Ứng dụng chính</strong> (vd. Google Maps) → cắm xe → mở <strong>NTV CarCast</strong> trên màn hình Android Auto.</li></ol>
+<p>Hướng dẫn chi tiết và xử lý sự cố: xem <a href="../README.md">README</a>.</p>
+<h2 id="v0.2.0-yeu-cau">Yêu cầu</h2>
+<div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Android Auto 17.8 · Desktop Head Unit</td></tr></tbody></table></div>
+<h2 id="v0.2.0-gioi-han-da-biet">Giới hạn đã biết</h2>
+<ul><li><strong>YouTube</strong>: app YouTube chính thức không phát video trên màn hình ảo. Dùng <strong>NewPipe</strong>, hoặc xem trong trình duyệt mà <strong>không bật fullscreen</strong>. Brave/Chrome bị lệch video khi fullscreen; đây là lỗi của Chromium.</li><li>App dùng bảo vệ nội dung (DRM, chặn chụp màn hình) sẽ hiện màn hình đen.</li><li>Bàn phím của Android Auto có thể bị khoá khi xe đang chạy; khi đó dùng 🎤 giọng nói.</li><li>Chưa thử trên xe thật và trên Android 12–14; hãy báo lỗi nếu gặp vấn đề.</li><li><strong>Không thao tác trên app khi đang lái xe.</strong></li></ul>
+<h2 id="v0.2.0-cap-nhat-tu-ban-debug-ban-thu-nghiem">Cập nhật từ bản debug / bản thử nghiệm</h2>
+<p>Từ bản này app có package mới <strong><code>com.ntv.carcast</code></strong> (bản thử nghiệm trước là <code>com.aasinglecast</code>). Hãy <strong>gỡ bản cũ</strong> (<code>adb uninstall com.aasinglecast</code>), cài bản này, rồi <strong>bật lại module NTV CarCast trong LSPosed</strong> (2 scope) và khởi động lại máy. Cài đặt trong app cũ không được chuyển sang.</p>
+<h2 id="v0.2.0-kiem-tra-file">Kiểm tra file</h2>
+<pre><code>SHA-256  cf4ccf5e92010599244854d7fae9c1de47cc6168131c0a5827c609d86a697b6f  NTV-CarCast-v0.2.0.apk</code></pre>
+<hr>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details></div>
+</div></main>
+
+<footer><div class="wrap">
+<span>NTV CarCast v1.2.0 · Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.
+<b>Không thao tác khi đang lái xe.</b></span>
+<span><a href="guide.html">Hướng dẫn</a> · <a href="releases.html">Phiên bản</a> ·
+<a href="https://forms.gle/XQfBQJuNHZzoBCHL6" target="_blank" rel="noopener">Báo lỗi / Góp ý</a></span>
+</div></footer>
+</body>
+</html>
