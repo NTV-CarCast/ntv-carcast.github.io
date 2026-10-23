@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 18 72 72">
+  <!-- Logo NTV CarCast. Sinh bởi tools/gen-brand.py. -->
+  <rect x="18" y="18" width="72" height="72" rx="16" fill="#101820"/>
+  <path fill="#FFFFFF" d="M28,30h52a6,6 0,0 1,6 6v34a6,6 0,0 1,-6 6h-52a6,6 0,0 1,-6 -6v-34a6,6 0,0 1,6 -6z"/>
+  <path fill="#1B2633" d="M29,34h50a3,3 0,0 1,3 3v32a3,3 0,0 1,-3 3h-50a3,3 0,0 1,-3 -3v-32a3,3 0,0 1,3 -3z"/>
+  <path fill="#00E5FF" d="M30,37h20a2,2 0,0 1,2 2v28a2,2 0,0 1,-2 2h-20a2,2 0,0 1,-2 -2v-28a2,2 0,0 1,2 -2z"/>
+  <path fill="none" d="M33,64C36,58 36,54 41,51S46,45 46,43" stroke="#1B2633" stroke-width="2.8" stroke-linecap="round"/>
+  <path fill="#1B2633" d="M46,39.5a3,3 0,1 1,0 6a3,3 0,1 1,0 -6z"/>
+  <path fill="#4F7CFF" d="M56,37h22a2,2 0,0 1,2 2v11a2,2 0,0 1,-2 2h-22a2,2 0,0 1,-2 -2v-11a2,2 0,0 1,2 -2z"/>
+  <path fill="#FFFFFF" d="M64,40.5L64,48.5L70.5,44.5Z"/>
+  <path fill="#FFB020" d="M56,54h22a2,2 0,0 1,2 2v11a2,2 0,0 1,-2 2h-22a2,2 0,0 1,-2 -2v-11a2,2 0,0 1,2 -2z"/>
+  <path fill="#1B2633" d="M59,58.5h16v2.5h-16zM59,63h10v2.5h-10z"/>
+  <path fill="#FF7A1A" d="M73,26.5a8.5,8.5 0,1 1,0 17a8.5,8.5 0,1 1,0 -17z" stroke="#101820" stroke-width="2"/>
+  <path fill="none" d="M71.8,30.5L70.2,39.5M75.8,30.5L74.2,39.5M68.6,33.2H77.6M68.2,36.8H77.2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <path fill="#FFFFFF" d="M42,78h24v3h-24z"/>
+</svg>

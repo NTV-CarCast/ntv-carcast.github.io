@@ -2,159 +2,251 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Các phiên bản · NTV CarCast</title>
-<meta name="description" content="Đưa ứng dụng trên điện thoại lên màn hình Android Auto: chạm, kéo, zoom như app thật; chia đôi, chia 3; toàn màn hình xe.">
+<meta name="description" content="Đưa Google Maps, Vietmap, Waze, YouTube, trình duyệt… trên điện thoại lên màn hình Android Auto: chia đôi, chia 3, cửa sổ nổi, bong bóng tốc độ từ Waze Mod hoặc Vietmap Live.">
 <meta property="og:title" content="Các phiên bản · NTV CarCast">
-<meta property="og:description" content="Đưa ứng dụng trên điện thoại lên màn hình Android Auto: chạm, kéo, zoom như app thật; chia đôi, chia 3; toàn màn hình xe.">
-<meta property="og:image" content="https://ntv-carcast.github.io/screenshots/1.2.0/car-fullscreen.png">
-<meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+<meta property="og:description" content="Đưa Google Maps, Vietmap, Waze, YouTube, trình duyệt… trên điện thoại lên màn hình Android Auto: chia đôi, chia 3, cửa sổ nổi, bong bóng tốc độ từ Waze Mod hoặc Vietmap Live.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#FBF7EE">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap">
 <style>
-:root{--bg:#ffffff;--bg2:#f5f7fa;--card:#ffffff;--line:#e3e8ef;--text:#0f172a;--text2:#475569;--muted:#8391a7;
---accent:#0b7cff;--accent-ink:#ffffff;--warn-bg:#fff7e6;--warn-line:#f5a524;--code:#f1f4f8;--shadow:0 1px 2px
-rgba(15,23,42,.05),0 8px 24px rgba(15,23,42,.06);color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#0b0f17;--bg2:#111722;--card:#141b27;--line:#243044;--text:#eef2f7;
---text2:#a9b4c4;--muted:#77849a;--accent:#4c9dff;--accent-ink:#06111f;--warn-bg:#2a2112;--warn-line:#f5a524;
---code:#1b2433;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);color-scheme:dark}}
+:root{--paper:#FBF7EE;--paper-2:#F4ECDC;--card:#FFFFFF;--ink:#201F1B;--ink-2:#5A564C;--line:#201F1B;
+--soft-line:#E4DCCB;--lift:#E6DCC8;--yellow:#F2B630;--yellow-soft:#FBF1C7;--blue:#4F5BD5;--red:#C9433F;
+--grid:rgba(32,31,27,.055);--head:"Lexend","Quicksand",system-ui,sans-serif;--body:"Quicksand","Nunito",system-ui,
+sans-serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--r:26px;color-scheme:light}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,
-"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-underline-offset:3px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:500 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased;
+background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),
+linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+h1,h2,h3,h4{font-family:var(--head);font-weight:800;line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+a{color:var(--blue)}
 img{max-width:100%;height:auto}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.narrow{max-width:760px}
-/* thanh trên */
-.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);
-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:8px;height:60px}
-@media (max-width:400px){.brand span{display:none}}
-.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:700;
-font-size:17px;margin-right:auto;white-space:nowrap}
-.brand i{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#0b7cff,#22d3ee);display:grid;
-place-items:center;font-style:normal;font-size:16px}
-.top nav{display:flex;gap:2px}
-.top nav a{color:var(--text2);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:15px;
-white-space:nowrap}
-.top nav a:hover,.top nav a[aria-current]{color:var(--text);background:var(--bg2)}
-/* nút */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:12px;
-font-weight:650;font-size:16px;text-decoration:none;border:1px solid var(--line);color:var(--text);
-background:var(--card);transition:transform .12s,filter .12s;min-height:48px}
-.btn:hover{transform:translateY(-1px)}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
-.btn.primary:hover{filter:brightness(1.07)}
-.btn.small{padding:8px 14px;font-size:14px;min-height:38px}
-/* hero */
-.hero{text-align:center;padding:64px 0 28px}
-.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.08;letter-spacing:-.025em;margin:0 auto 18px;max-width:820px}
-.hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--text2);max-width:680px;margin:0 auto}
-.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:28px 0 10px}
-.fine{color:var(--muted);font-size:14px}
-.frame{margin:40px auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);
-background:#000}
-.frame img{display:block;width:100%}
-/* khối */
-section.block{padding:64px 0}
-section.alt{background:var(--bg2)}
-.eyebrow{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
-h2.title{font-size:clamp(26px,3.6vw,36px);letter-spacing:-.02em;line-height:1.15;margin:0 0 12px}
-p.lede{color:var(--text2);font-size:18px;margin:0 0 32px;max-width:640px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-.card .ico{font-size:26px;line-height:1;margin-bottom:12px}
-.card h3{font-size:18px;margin:0 0 6px}
-.card p{margin:0;color:var(--text2);font-size:15.5px}
-/* thư viện ảnh */
-.gallery{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
-.gallery figure{margin:0}
-.gallery a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000}
-.gallery img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .25s}
-.gallery a:hover img{transform:scale(1.02)}
-.gallery figcaption{font-size:14.5px;color:var(--text2);margin-top:8px}
-.gallery figure.phone a{background:var(--card)}
-.gallery figure.phone img{object-fit:contain;object-position:top}
-/* các bước */
-.steps{counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
-.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative}
-.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;
-border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:800;margin-bottom:12px}
-.step h3{font-size:17px;margin:0 0 6px}
-.step p{margin:0;color:var(--text2);font-size:15px}
-.need{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
-.need span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;
-color:var(--text2)}
-/* hỏi đáp / phiên bản (gập mở) */
-details.qa,details.rel{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0}
-details.qa>summary,details.rel>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;
-gap:12px;font-weight:650}
-details>summary::-webkit-details-marker{display:none}
-details.qa>summary::after,details.rel>summary::after{content:"";margin-left:auto;width:9px;height:9px;flex:none;
-border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);
-transition:transform .15s}
-details[open].qa>summary::after,details[open].rel>summary::after{transform:rotate(225deg)}
-details.qa .a{padding:0 20px 18px;color:var(--text2)}
-/* tải về */
-.download{text-align:center}
-.download .actions{margin-top:20px}
-.sha{font:12.5px ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);word-break:break-all;
-margin-top:14px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:10px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1240px;margin:0 auto}
+.narrow{max-width:900px}
+.box{background:var(--card);border:2px solid var(--line);border-radius:var(--r);box-shadow:10px 10px 0 var(--lift)}
+.tag{display:inline-block;font:700 .72rem/1 var(--head);letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;
+border:2px solid var(--line);border-radius:10px;background:var(--card);box-shadow:3px 3px 0 var(--lift);
+transform:rotate(-2deg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;
+border-radius:999px;font:700 .95rem/1 var(--body);text-decoration:none;border:2px solid #201F1B;background:#201F1B;
+color:#FBF7EE;box-shadow:5px 5px 0 var(--yellow);flex:none;transition:transform .12s}
+.btn:hover{transform:translate(-1px,-1px)}
+.btn.light{background:var(--card);color:var(--ink);border-color:var(--line);box-shadow:4px 4px 0 var(--lift)}
+.fine{color:var(--ink-2);font-size:.9rem;font-weight:700}
+/* đầu trang */
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper-2) 94%,transparent);
+border-bottom:2px solid var(--line);backdrop-filter:blur(6px)}
+header.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;
+padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;font:800 1.3rem/1 var(--head);color:var(--ink);text-decoration:none}
+.brand img{width:36px;height:36px;border-radius:10px;border:2px solid var(--line)}
+nav.links{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.links::-webkit-scrollbar{display:none}
+nav.links>a{flex:none;padding:8px 12px;border-radius:999px;border:2px solid transparent;color:var(--ink);
+text-decoration:none;font-weight:700;font-size:.98rem}
+nav.links>a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+nav.links>a[aria-current="page"]{border-color:var(--line);background:var(--card);box-shadow:3px 3px 0 var(--lift);
+text-decoration:none}
+/* đầu trang con */
+main{padding-block:40px 0}
+.page-head{display:grid;gap:12px;justify-items:start;margin-bottom:28px}
+.page-head h1{font-size:clamp(2rem,4.6vw,3rem);margin:0}
+.page-head p{color:var(--ink-2);margin:0}
+.toc{padding:18px 22px;margin:0 0 28px;box-shadow:6px 6px 0 var(--lift)}
+.toc b{display:block;font-family:var(--head);margin-bottom:6px}
+.toc a{display:inline-block;margin:3px 14px 3px 0;text-decoration:none;font-weight:700}
+.doc{padding:clamp(18px,4vw,40px)}
 /* nội dung markdown (hướng dẫn, ghi chú phát hành) */
-.prose h2{font-size:26px;letter-spacing:-.01em;margin:44px 0 12px;scroll-margin-top:76px}
-.prose h3{font-size:19px;margin:30px 0 8px;scroll-margin-top:76px}
-.prose h4{font-size:17px;margin:22px 0 6px}
-.prose p,.prose li{color:var(--text2)}
-.prose strong{color:var(--text)}
+.prose h2{font-size:1.6rem;margin:44px 0 12px;scroll-margin-top:90px}
+.prose>h2:first-child{margin-top:0}
+.prose h3{font-size:1.2rem;margin:30px 0 8px;scroll-margin-top:90px}
+.prose h4{font-size:1.05rem;margin:22px 0 6px}
+.prose p,.prose li{color:var(--ink-2)}
+.prose strong{color:var(--ink)}
 .prose li{margin:4px 0}
-.prose img{border-radius:12px;border:1px solid var(--line)}
+.prose img{border-radius:12px;border:2px solid var(--line);background:#0B0F14}
 .prose p img{display:inline-block;margin:6px 4px;vertical-align:top}
-.prose hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-.prose code{font:14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--code);border-radius:6px;
-padding:1px 6px;word-break:break-word}
-.prose pre{background:var(--code);border-radius:12px;padding:14px 16px;overflow-x:auto;max-width:100%}
-.prose pre code{background:none;padding:0;word-break:normal;white-space:pre;font-size:13.5px}
-.prose blockquote{margin:16px 0;padding:12px 16px;border-left:4px solid var(--warn-line);background:var(--warn-bg);
-border-radius:0 12px 12px 0}
-.prose blockquote p{margin:4px 0;color:var(--text)}
+.prose hr{border:0;border-top:2px dashed var(--soft-line);margin:36px 0}
+.prose code{font:600 .88em/1.5 var(--mono);background:var(--paper-2);border-radius:6px;padding:1px 6px;
+word-break:break-word}
+.prose pre{background:#201F1B;color:#FBF7EE;border-radius:14px;padding:14px 16px;overflow-x:auto;max-width:100%}
+.prose pre code{background:none;color:inherit;padding:0;word-break:normal;white-space:pre;font-size:.85rem}
+.prose blockquote{margin:16px 0;padding:12px 16px;border:2px dashed var(--line);background:var(--yellow-soft);
+border-radius:16px}
+.prose blockquote p{margin:4px 0;color:var(--ink)}
 .prose .table{overflow-x:auto;margin:14px 0}
-.prose table{border-collapse:collapse;width:100%;font-size:15px}
-.prose th,.prose td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
-.prose th{background:var(--bg2)}
+.prose table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card)}
+.prose th,.prose td{border:2px solid var(--soft-line);padding:9px 12px;text-align:left;vertical-align:top}
+.prose th{background:var(--paper-2);color:var(--ink);font-family:var(--head)}
 .prose td img{width:100%;margin:0}
-.toc{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:24px 0}
-.toc b{display:block;margin-bottom:6px}
-.toc a{display:inline-block;margin:3px 14px 3px 0;text-decoration:none}
-.page-head{padding:48px 0 8px}
-.page-head h1{font-size:clamp(30px,4.6vw,44px);letter-spacing:-.02em;margin:0 0 8px}
-.page-head p{color:var(--text2);margin:0}
-details.rel>summary .v{font-size:19px;font-weight:800}
-details.rel>summary .badge{font-size:12px;font-weight:700;background:var(--accent);color:var(--accent-ink);
-border-radius:999px;padding:2px 10px}
-details.rel>summary .d{color:var(--muted);font-weight:500;font-size:14px}
-details.rel .body{padding:4px 20px 22px;border-top:1px solid var(--line)}
-details.rel .dl{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:18px 0 4px}
-footer{border-top:1px solid var(--line);padding:32px 0 44px;color:var(--muted);font-size:14px;margin-top:48px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
-footer a{color:var(--text2);text-decoration:none}
-@media (max-width:640px){.top nav a.hide-sm{display:none}.top nav a{padding:8px 8px;font-size:14px}
-.top .btn{width:auto;padding:8px 12px}section.block{padding:44px 0}
-.hero{padding:40px 0 16px}.gallery{grid-template-columns:1fr}main .btn{width:100%}.actions{flex-direction:column}
-details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summary,details.rel>summary{padding-left:16px;padding-right:16px}}
+/* phiên bản (gập mở) */
+details.rel{margin:0 0 18px;overflow:hidden;box-shadow:6px 6px 0 var(--lift)}
+details.rel>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;flex-wrap:wrap;align-items:center;
+gap:8px 12px}
+details.rel>summary::-webkit-details-marker{display:none}
+details.rel>summary::after{content:"";margin-left:auto;flex:none;width:28px;height:28px;border-radius:50%;
+border:2px solid var(--line);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23201F1B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E") center/16px no-repeat var(--card);
+transition:transform .16s}
+details[open].rel>summary::after{transform:rotate(180deg)}
+details.rel>summary .v{font:800 1.3rem/1 var(--head)}
+details.rel>summary .badge{font:700 .72rem/1 var(--head);letter-spacing:.06em;text-transform:uppercase;
+background:var(--yellow);border:2px solid var(--line);border-radius:999px;padding:5px 10px}
+details.rel>summary .d{color:var(--ink-2);font-weight:600;font-size:.92rem}
+details.rel .body{padding:6px 20px 22px;border-top:2px solid var(--line)}
+details.rel .dl{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin:18px 0 4px}
+/* cuối trang */
+footer{margin-top:72px;border-top:2px solid var(--line);background:var(--paper-2);padding-block:28px 40px;
+font-size:.9rem;color:var(--ink-2)}
+footer .wrap{display:grid;gap:8px}
+footer p{margin:0}
+footer b{color:var(--ink)}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;font-weight:700}
+footer nav a{color:var(--ink)}
+@media (max-width:1180px){.brand{order:1}header.top .btn{order:2;margin-left:auto}
+nav.links{order:3;flex-basis:100%;margin:0 -4px}}
+@media (max-width:640px){.brand{font-size:1.12rem}.brand img{width:32px;height:32px}
+header.top .btn{min-height:38px;padding:0 14px;font-size:.88rem}.box{box-shadow:6px 6px 0 var(--lift)}
+main{padding-top:24px}details.rel .body,details.rel>summary{padding-left:14px;padding-right:14px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap">
-<a class="brand" href="index.html"><i>🚗</i><span>NTV CarCast</span></a>
-<nav><a href="index.html" class="hide-sm">Trang chủ</a><a href="guide.html">Hướng dẫn</a><a href="releases.html" aria-current="page">Phiên bản</a></nav>
-<a class="btn primary small" href="downloads/NTV-CarCast-v1.2.0.apk" download>Tải v1.2.0</a>
+<header class="top gutter"><div class="wrap">
+<a class="brand" href="index.html"><img src="img/logo.svg" width="36" height="36" alt="">NTV CarCast</a>
+<nav class="links" aria-label="Trang"><a href="index.html">Trang chủ</a><a href="index.html#tinh-nang">Tính năng</a><a href="index.html#bang-gia">Bảng giá</a><a href="index.html#hoi-dap">Hỏi đáp</a><a href="guide.html">Hướng dẫn</a><a href="releases.html" aria-current="page">Phiên bản</a></nav>
+<a class="btn" href="index.html#tai-ve">Tải về miễn phí</a>
 </div></header>
 
-<main><div class="wrap narrow">
-<div class="page-head"><h1>Các phiên bản</h1>
-<p>Cập nhật: tải bản mới, cài đè lên bản cũ (cài đặt vẫn giữ), rồi khởi động lại điện thoại.</p></div>
-<div style="margin-top:24px"><details class="rel" id="v1.2.0" open><summary><span class="v">v1.2.0</span><span class="badge">Mới nhất</span><span class="d">13/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn primary small" href="downloads/NTV-CarCast-v1.2.0.apk" download>⬇&nbsp; Tải APK v1.2.0</a><span class="fine">655 KB</span></div><p>Bản này có 3 thứ mới: <strong>app chiếm hết màn hình xe</strong>, <strong>cắm cáp là app tự mở</strong>, và <strong>app tự báo khi có bản mới</strong>.</p>
+<main class="gutter"><div class="wrap narrow">
+<div class="page-head"><span class="tag">Phiên bản</span><h1>Các phiên bản</h1>
+<p>Cập nhật: tải bản mới, cài đè lên bản cũ (không gỡ, cài đặt và đăng nhập vẫn giữ), rồi khởi động lại điện
+thoại.</p></div>
+<details class="rel box" id="v1.5.0" open><summary><span class="v">v1.5.0</span><span class="badge">Mới nhất</span><span class="d">23/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn" href="downloads/NTV-CarCast-v1.5.0.apk" download>Tải APK v1.5.0</a><span class="fine">3496 KB</span></div><p>Bản này có <strong>tài khoản Google và ba gói</strong> (Miễn phí / Cơ bản / Đầy đủ), <strong>dùng thử đầy đủ tính năng</strong>, <strong>báo lỗi ngay trên xe</strong> (2 chạm, kèm nhật ký đã che thông tin riêng) và <strong>nhắc bản mới từ máy chủ</strong>. App điện thoại chia thành <strong>4 thẻ</strong> cho gọn; app mở nhanh hơn.</p>
+<blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root + LSPosed</strong> như cũ. Từ bản này phải <strong>đăng nhập Google</strong> mới dùng được. Cập nhật thì <strong>cài đè</strong> (không gỡ bản cũ), xong nhớ <strong>khởi động lại điện thoại</strong>.</p></blockquote>
+<h2 id="v1.5.0-co-gi-moi">Có gì mới</h2>
+<h3 id="v1.5.0-1-dang-nhap-google-dung-thu-ba-goi">1. Đăng nhập Google, dùng thử, ba gói</h3>
+<p>Mở app lần đầu sẽ thấy màn chào: bấm <strong>Đăng nhập bằng Google</strong>. Tài khoản mới được <strong>dùng thử gói Đầy đủ</strong> (hiện là <strong>3 ngày</strong>, số ngày lấy từ máy chủ nên có thể đổi). Hết thử thì về gói <strong>Miễn phí</strong>: chia đôi và các tính năng cơ bản vẫn dùng mãi, không giới hạn thời gian.</p>
+<div class="table"><table><thead><tr><th>Gói</th><th>Có gì</th><th>Giá</th></tr></thead><tbody><tr><td><strong>Miễn phí</strong></td><td>Chia đôi, Toàn màn hình, tự mở khi kết nối, chỉnh DPI, zoom một vùng, tắt màn hình điện thoại</td><td>0đ</td></tr><tr><td><strong>Cơ bản</strong></td><td>Miễn phí + <strong>1 chính + 1 nổi</strong> (cửa sổ nổi, thu gọn) + <strong>chia 3</strong></td><td><strong>100.000đ</strong>, mua một lần, dùng vĩnh viễn</td></tr><tr><td><strong>Đầy đủ</strong></td><td>Cơ bản + <strong>bong bóng tốc độ</strong>, <strong>tốc độ trên thẻ media</strong>, <strong>báo cáo lỗi bản đồ</strong></td><td><strong>200.000đ</strong>, mua một lần, dùng vĩnh viễn</td></tr></tbody></table></div>
+<p>Giá, số ngày thử luôn theo bảng giá trên trang chủ: https://ntv-carcast.github.io/#bang-gia</p>
+<p>
+  <img src="screenshots/1.5.0/phone-chao.png" width="280" alt="Màn chào trên điện thoại: nút Đăng nhập bằng Google, dùng thử, ba gói">
+  &nbsp;
+  <img src="screenshots/1.5.0/phone-tai-khoan.png" width="280" alt="Thẻ Tài khoản: email, Dùng thử · còn 3 ngày, mã máy, Kiểm tra lại, Mua gói, Đăng xuất">
+</p>
+<p><strong>Thẻ Tài khoản</strong> trên điện thoại: email, gói đang dùng và hạn (vd. "Dùng thử · còn 3 ngày", "Gói Đầy đủ · vĩnh viễn"), <strong>mã máy</strong>, giá từng gói, nút <strong>Kiểm tra lại</strong>, <strong>Mua gói</strong>, <strong>Liên hệ</strong>, <strong>Đăng xuất</strong>.</p>
+<p><strong>Trên màn hình xe:</strong></p>
+<ul><li>Chưa đăng nhập: xe chỉ hiện <strong>"Mở NTV CarCast trên điện thoại để đăng nhập"</strong>, không mở app nào.</li><li>Mục chưa có trong gói (Chính + nổi, Chia 3, bong bóng tốc độ, báo cáo) có <strong>🔒</strong> trong menu ⚙. Chạm vào thì xe báo <strong>"Cần gói … · nâng cấp trên điện thoại"</strong>. Xe <strong>không hiện mã QR hay chỗ thanh toán</strong> nào.</li><li>Bố cục đã chọn trước đó (vd. chia 3) vẫn được nhớ: mua gói xong là xe tự về đúng bố cục đó.</li></ul>
+<div class="table"><table><thead><tr><th>Xe khi chưa đăng nhập</th><th>Menu ⚙ ở gói Miễn phí: 🔒 ở mục cần gói</th></tr></thead><tbody><tr><td><img src="screenshots/1.5.0/car-login.png" alt="Màn hình xe: Mở NTV CarCast trên điện thoại để đăng nhập" loading="lazy"></td><td><img src="screenshots/1.5.0/car-menu-khoa.png" alt="Menu ⚙ trên xe: Chia đôi dùng được, Chính + nổi và Chia 3 có 🔒, bong bóng tốc độ có 🔒" loading="lazy"></td></tr></tbody></table></div>
+<div class="table"><table><thead><tr><th>Gói Cơ bản: 1 chính + 1 nổi</th><th>Gói Cơ bản: chia 3</th></tr></thead><tbody><tr><td><img src="screenshots/1.5.0/car-chinh-noi.png" alt="Video toàn ô, Google Maps dẫn đường trong cửa sổ nổi" loading="lazy"></td><td><img src="screenshots/1.5.0/car-chia-3.png" alt="Chia 3: video bên trái, hai app dẫn đường bên phải" loading="lazy"></td></tr></tbody></table></div>
+<p><strong>Cách mua:</strong></p>
+<ol><li>Xem bảng giá trên trang chủ (nút <strong>Mua gói</strong> trong thẻ Tài khoản mở đúng chỗ này): https://ntv-carcast.github.io/#bang-gia</li><li><strong>Chuyển khoản</strong> theo số tài khoản trên trang, <strong>nội dung chuyển khoản ghi email Google</strong> bạn đã đăng nhập trong app.</li><li>Chủ app kích hoạt gói theo email đó (làm tay, nên có thể mất một lúc). Xong thì bấm <strong>Kiểm tra lại</strong> trong thẻ Tài khoản (hoặc chờ lần nối xe sau): gói tự mở, không cần cài lại.</li></ol>
+<p><strong>Cần biết:</strong></p>
+<ul><li><strong>Mỗi tài khoản dùng trên 1 máy.</strong> Đổi máy thì bấm <strong>Liên hệ</strong> để chủ app gỡ máy cũ, rồi bấm <strong>Kiểm tra lại</strong> trên máy mới.</li><li>Mỗi máy chỉ dùng thử bằng <strong>một</strong> tài khoản. Tài khoản thứ hai trên cùng máy vào thẳng gói Miễn phí.</li><li><strong>Lái xe không cần mạng.</strong> Gói được lưu trong máy và dùng không mạng tới <strong>14 ngày</strong>; app tự gia hạn mỗi lần có mạng. Quá 14 ngày không có mạng thì về Miễn phí cho tới khi mở mạng và bấm <strong>Kiểm tra lại</strong>.</li><li>Gói hết hạn giữa đường thì vẫn giữ tới hết lần lái đó.</li><li>App chỉ lưu <strong>email Google</strong> để quản lý gói. Chi tiết: <a href="dieu-khoan.html">điều khoản</a>.</li><li>Mua gói là mua quyền sử dụng các tính năng trên, không phải ủng hộ / donate.</li></ul>
+<h3 id="v1.5.0-2-bao-loi-ngay-tren-xe">2. Báo lỗi ngay trên xe</h3>
+<p>Gặp lỗi khi đang dùng thì báo luôn, chủ app nhận được kèm nhật ký để sửa.</p>
+<ul><li><strong>Trên xe</strong>: menu ⚙ → <strong>🐞 Báo lỗi</strong> → chọn nhóm (Hiển thị app, Bố cục, Bong bóng tốc độ, Khác) → chọn lỗi. <strong>2 chạm</strong>, không phải gõ chữ. Xe hiện <strong>mã 4 ký tự</strong> (vd. <code>7F3A</code>) để bạn nói khi liên hệ.</li><li><strong>Trên điện thoại</strong>: thẻ <strong>Cài đặt</strong> → <strong>🐞 Báo lỗi app</strong>: chọn lỗi, mô tả thêm (bị khi nào, ở app nào). Báo lỗi vừa gửi từ xe cũng hiện ở đây để thêm mô tả.</li><li>Gửi kèm thông số máy và <strong>nhật ký phiên xe gần nhất</strong>. Nhật ký <strong>đã che</strong> địa chỉ trang web, email, toạ độ và mã đăng nhập trước khi gửi. Báo lỗi tự xoá trên máy chủ sau 90 ngày.</li><li>Mất mạng thì báo lỗi được giữ trong máy, tự gửi khi có mạng (mở app hoặc nối xe).</li></ul>
+<h3 id="v1.5.0-3-nhac-ban-moi-tu-may-chu">3. Nhắc bản mới từ máy chủ</h3>
+<ul><li>Có bản mới thì thẻ <strong>Màn xe</strong> hiện thẻ <strong>"Có bản mới"</strong> kèm điểm mới và nút <strong>Mở trang phát hành</strong>; tab <strong>Tài khoản</strong> có chấm cam; màn hình xe hiện một dòng báo.</li><li>Bản quá cũ (dưới bản tối thiểu chủ app đặt) thì được nhắc <strong>mỗi lần nối xe</strong>.</li><li>App kiểm tra qua máy chủ và trang chủ NTV CarCast, không dùng GitHub nữa.</li></ul>
+<h3 id="v1.5.0-4-app-dien-thoai-chia-4-the">4. App điện thoại chia 4 thẻ</h3>
+<p>Thanh thẻ ở dưới: <strong>Màn xe</strong> (bố cục, app từng ô, DPI), <strong>Tốc độ</strong> (bong bóng tốc độ, nguồn dữ liệu, báo cáo bản đồ), <strong>Tài khoản</strong>, <strong>Cài đặt</strong> (tuỳ chọn khác, hướng dẫn cài, báo lỗi). Mục chưa có trong gói hiện 🔒 và ghi gói cần có.</p>
+<h3 id="v1.5.0-5-nhe-va-nhanh-hon">5. Nhẹ và nhanh hơn</h3>
+<ul><li>Mở app và nối xe <strong>không phải chờ</strong> phần đăng nhập / máy chủ: màn hình xe lên ngay, gói kiểm sau ở nền.</li><li>APK được thu gọn: <strong>khoảng 3,5 MB</strong> dù có thêm phần đăng nhập Google (không thu gọn thì khoảng 16 MB). Phần Android Auto vẫn giữ nguyên.</li></ul>
+<h3 id="v1.5.0-6-bieu-tuong-moi">6. Biểu tượng mới</h3>
+<p>Biểu tượng NTV CarCast và <strong>CarCast Tốc độ</strong> vẽ lại, có <strong>dấu # cam</strong> ở góc (nhắc app cần root, phân biệt với NTV DriveTV).</p>
+<h2 id="v1.5.0-sua-loi">Sửa lỗi</h2>
+<ul><li><strong>Waze trong ô chia màn</strong> có lúc mở lên điện thoại thay vì trên xe (ô xe chỉ hiện "Đang mở Waze…"). Nay app tự kéo Waze về đúng ô.</li><li>Chưa chọn bố cục thì mặc định là <strong>chia đôi</strong> (bố cục của gói Miễn phí).</li></ul>
+<h2 id="v1.5.0-cap-nhat-tu-v1-4-0-hoac-cu-hon">Cập nhật từ v1.4.0 (hoặc cũ hơn)</h2>
+<ol><li>Tải <strong>NTV-CarCast-v1.5.0.apk</strong> bằng nút <strong>Tải APK</strong> của bản này, hoặc ở trang chủ: https://ntv-carcast.github.io/#tai-ve</li><li>Cài đè lên bản cũ, <strong>không gỡ</strong> (cài đặt, quyền root và LSPosed vẫn giữ):<pre><code class="lang-bash">adb install -r -i com.android.vending NTV-CarCast-v1.5.0.apk</code></pre>
+<p>Hoặc cài bằng KingInstaller như lần đầu.</p></li><li>Mở <strong>LSPosed</strong> xem NTV CarCast vẫn tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại.</strong></li><li>Mở NTV CarCast trên điện thoại → <strong>Đăng nhập bằng Google</strong> → bắt đầu dùng thử.</li></ol>
+<blockquote><p>Người đang dùng v1.4.0 <strong>không có ưu đãi hay chuyển đổi riêng</strong>: đăng nhập và được dùng thử như mọi người.</p></blockquote>
+<p><strong>Lỡ gỡ app rồi cài lại</strong> thì mất luôn những thứ nằm ngoài app, phải làm lại:</p>
+<ol><li>Mở NTV CarCast → Magisk hỏi quyền <strong>Superuser</strong> → <strong>Cho phép</strong>, <strong>Vĩnh viễn</strong>.</li><li><strong>LSPosed</strong> → Modules → <strong>NTV CarCast</strong> → bật lại module, tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại</strong>, rồi đăng nhập lại (gói vẫn còn theo tài khoản).</li></ol>
+<h2 id="v1.5.0-luu-y">Lưu ý</h2>
+<ul><li>Lần đầu đăng nhập cần <strong>mạng</strong> và <strong>tài khoản Google</strong> trên máy.</li><li>Bong bóng, thẻ media và báo cáo (gói Đầy đủ) vẫn cần <strong>Waze Mod V14+</strong> hoặc <strong>Vietmap Live</strong> đang chạy.</li><li>Đã thử trên Desktop Head Unit với Galaxy Z Flip3: đăng nhập thật, mất mạng, chỉnh giờ máy, cài đè, gỡ cài lại. Chưa thử trên xe thật.</li><li><strong>Không thao tác trên app khi đang lái xe.</strong></li></ul>
+<h2 id="v1.5.0-yeu-cau">Yêu cầu</h2>
+<div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Tài khoản</td><td>Google (đăng nhập trong app); mạng lúc đăng nhập và ít nhất 14 ngày một lần</td></tr><tr><td>Bong bóng / thẻ media / báo cáo</td><td>Gói Đầy đủ (hoặc dùng thử) · Waze Mod V14+ hoặc Vietmap Live 3.4+</td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Desktop Head Unit · Android Auto 17.8</td></tr></tbody></table></div>
+<h2 id="v1.5.0-kiem-tra-file">Kiểm tra file</h2>
+<pre><code>SHA-256  8eb1889ade3fe3dca1a3cf3f188bcc3119370e9b8d99cbb3c35b4ad93101526b  NTV-CarCast-v1.5.0.apk</code></pre>
+<hr>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel box" id="v1.4.0"><summary><span class="v">v1.4.0</span><span class="d">17/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn" href="downloads/NTV-CarCast-v1.4.0.apk" download>Tải APK v1.4.0</a><span class="fine">877 KB</span></div><p>Bản này có <strong>Vietmap Live</strong> làm nguồn dữ liệu (bên cạnh Waze Mod), <strong>báo cáo lỗi bản đồ ngay trên xe</strong>, và <strong>tốc độ trên thẻ "đang phát" cạnh bản đồ</strong> của Android Auto. Bong bóng tốc độ cũng được chỉnh lại cho gọn và nhẹ hơn.</p>
+<blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root + LSPosed</strong> như cũ. Cập nhật xong nhớ <strong>khởi động lại điện thoại</strong>.</p></blockquote>
+<h2 id="v1.4.0-co-gi-moi">Có gì mới</h2>
+<h3 id="v1.4.0-1-nguon-du-lieu-waze-mod-hoac-vietmap-live">1. Nguồn dữ liệu: Waze Mod hoặc Vietmap Live</h3>
+<p>App điện thoại có mục <strong>Nguồn dữ liệu</strong> riêng (hiện cả khi bong bóng đang tắt). Mỗi nguồn một thẻ: trạng thái, nút <strong>Kết nối</strong>, nút <strong>Dùng</strong>.</p>
+<ul><li><strong>Waze Mod V14+</strong>: bấm <strong>Kết nối</strong> → <strong>Cho phép</strong> trong Waze Mod. Máy cài 2 bản (com.waze, com.chisadin.wazemod) thì app hỏi chọn bản đang dùng.</li><li><strong>Vietmap Live</strong> (mới): bấm <strong>Kết nối</strong>. Máy root được tự cấp quyền, không phải bấm gì thêm; không thì bấm <strong>Tạo</strong> trong hộp thoại tạo widget của Android. Có <strong>tốc độ, giới hạn và 2 cảnh báo</strong> (ảnh cảnh báo của Vietmap, biển đổi tốc độ); <strong>không có</strong> hướng rẽ, làn đường, vùng tốc độ trung bình. Cần đăng nhập Vietmap và để Vietmap chạy nền.</li></ul>
+<p>
+  <img src="screenshots/1.4.0/phone-sources.png" width="300" alt="Mục Nguồn dữ liệu: Waze Mod và Vietmap Live, mục Báo cáo bản đồ">
+</p>
+<h3 id="v1.4.0-2-bao-cao-loi-ban-do-ngay-tren-xe">2. Báo cáo lỗi bản đồ ngay trên xe</h3>
+<p>Gặp sai tốc độ, thiếu camera, cảnh báo sai, biển cấm… thì chạm thẻ <strong>Báo cáo</strong> trên bong bóng (hoặc menu ⚙ → <strong>Báo cáo lỗi bản đồ</strong>). Tối đa <strong>2 chạm</strong>. App lưu <strong>vị trí lúc bấm</strong>, tốc độ, giới hạn, các cảnh báo đang hiện.</p>
+<div class="table"><table><thead><tr><th>Chạm Báo cáo</th><th>Sai tốc độ: chọn tốc độ đúng (giới hạn đang báo được viền xanh)</th><th>Đã lưu, có Hoàn tác</th></tr></thead><tbody><tr><td><img src="screenshots/1.4.0/car-report-sheet.png" alt="Bảng báo cáo trên xe: Đánh dấu nhanh, Sai tốc độ, Thiếu camera, Cảnh báo sai, Biển cấm, Hết cấm, Khác, Đóng" loading="lazy"></td><td><img src="screenshots/1.4.0/car-report-speed.png" alt="Mức 2: biển 30 đến 120, Không rõ, Quay lại" loading="lazy"></td><td><img src="screenshots/1.4.0/car-report-saved.png" alt="Thông báo Đã lưu: Sai tốc độ → 60 km/h, nút Hoàn tác" loading="lazy"></td></tr></tbody></table></div>
+<ul><li>Để yên <strong>10 giây</strong> thì tự lưu (mức 1: "Đánh dấu nhanh"; mức 2: loại đó với chi tiết "không rõ"). Chạm ngoài bảng hoặc <strong>Đóng</strong> thì không lưu. Núm xoay / D-pad / OK của xe dùng được.</li><li>Thẻ media có thêm nút 📍 <strong>Đánh dấu</strong>: một chạm lưu "Đánh dấu nhanh" mà không cần mở NTV CarCast.</li><li>Trên điện thoại: mục <strong>Báo cáo bản đồ</strong> → <strong>Xem &amp; xuất</strong>: sửa loại / ghi chú, đánh dấu đã sửa trên Waze, mở <strong>Waze Map Editor</strong> / Google Maps / Waze tại chỗ đó, sao chép mô tả (dán được vào Waze), <strong>xuất CSV</strong> (Excel, Google Sheets, My Maps) hoặc <strong>GeoJSON</strong>, chia sẻ hoặc lưu vào Tải xuống.</li><li>Cần cho phép <strong>vị trí</strong> (chỉ khi đang dùng) ở mục Báo cáo bản đồ; không cho phép thì báo cáo vẫn lưu nhưng thiếu toạ độ. Báo cáo <strong>chỉ nằm trong máy</strong>, chỉ ra ngoài khi bạn bấm Xuất.</li><li>Waze Mod không cho app khác gửi báo cáo thẳng vào Waze, nên app tự lưu để bạn sửa sau trên Waze Map Editor.</li></ul>
+<h3 id="v1.4.0-3-toc-do-tren-the-media-canh-ban-do">3. Tốc độ trên thẻ media cạnh bản đồ</h3>
+<p>Android Auto luôn để một thẻ "đang phát" cạnh bản đồ. NTV CarCast giờ có thêm app media <strong>CarCast Tốc độ</strong>: thẻ của nó hiện <strong>biển giới hạn to</strong>, <strong>tốc độ hiện tại</strong> (trắng; chạm giới hạn thì cam; vượt tốc thì đỏ) và <strong>mục quan trọng nhất</strong> phía trước (camera, cảnh báo hoặc hướng rẽ). Hai dòng chữ dưới thẻ là các mục kế tiếp: rẽ, kẹt xe (+ số phút), đổi tốc độ sắp tới, vùng tốc độ trung bình, tên đường đang đi.</p>
+<div class="table"><table><thead><tr><th>Thẻ cạnh Google Maps</th><th>Màn đang phát của CarCast Tốc độ</th></tr></thead><tbody><tr><td><img src="screenshots/1.4.0/car-media-card.png" alt="Google Maps bên trái, thẻ CarCast Tốc độ bên phải: biển 80, tốc độ 92 nền đỏ, camera 230 m" loading="lazy"></td><td><img src="screenshots/1.4.0/car-media-now-playing.png" alt="Màn đang phát: biển 80, tốc độ 92, camera 230 m, đổi tốc độ 1,9 km → 60, kẹt xe 3,1 km +5 phút" loading="lazy"></td></tr></tbody></table></div>
+<p><strong>Cách dùng:</strong></p>
+<ol><li>Bật bong bóng tốc độ như trước (app điện thoại → <strong>Bong bóng tốc độ</strong> → <strong>Dọc</strong> hoặc <strong>Ngang</strong>). Tuỳ chọn <strong>Tốc độ trên thẻ media</strong> ngay dưới bản xem trước, mặc định <strong>bật</strong>.</li><li>Trên xe: mở lưới ứng dụng → <strong>CarCast Tốc độ</strong> một lần. Từ đó thẻ cạnh bản đồ có tốc độ mỗi khi Waze đang chạy.</li></ol>
+<p><strong>Cần biết:</strong></p>
+<ul><li>Thẻ chỉ dành cho app media dùng gần nhất. Nếu vừa nghe Spotify / YT Music thì thẻ đầu là app đó; chạm <strong>dấu chấm</strong> ở góc trên thẻ để sang thẻ CarCast Tốc độ.</li><li>CarCast Tốc độ <strong>không phát gì</strong>: nút phát trên thẻ không làm gì, không giành âm thanh hay nút media của app nhạc.</li><li>Số tốc độ trên ảnh thẻ đổi tối đa mỗi 3 giây (Android Auto nháy nhẹ mỗi lần đổi ảnh). Vượt tốc, đổi giới hạn, cảnh báo mới thì đổi ngay.</li></ul>
+<h3 id="v1.4.0-4-bong-bong-toc-do-gon-va-nhe-hon">4. Bong bóng tốc độ gọn và nhẹ hơn</h3>
+<ul><li><strong>Bản xem trước trên điện thoại</strong> dùng dữ liệu mẫu (rẽ, làn, camera, đổi tốc độ), nên ở nhà Waze chưa chạy cũng chỉnh được kiểu, cỡ, độ đậm và thấy ngay kết quả. Trạng thái kết nối thật nằm ở mục Nguồn dữ liệu.</li><li><strong>Độ đậm nền</strong> chỉnh được: 50 / 65 / 80 / 90% (Tuỳ chỉnh bong bóng). Mặc định 80%.</li><li><strong>Đang chạm màn hình xe</strong> (kéo bản đồ, cuộn trang) thì bong bóng vẽ thưa lại, nhường máy cho app đang dùng.</li><li>Nút mở menu trên xe đổi thành <strong>bánh răng ⚙</strong> (trước là ⋮). Bong bóng <strong>kéo đè lên được</strong> nút ⚙ (trước đây tự né ra chỗ khác); bong bóng che nút thì kéo bong bóng sang bên để mở menu.</li><li><strong>Sắp tới nút giao</strong>: hướng rẽ và làn đường luôn lên ngay cạnh khối tốc độ. Trước đây ở chế độ Đầy đủ, đôi khi phải đợi tới lần cảnh báo đổi mới thấy.</li><li>Dải ngang bỏ vạch ngăn thừa ở chỗ nối với khối tốc độ. Kẹt xe ghi <strong>"+5 phút"</strong> thay cho "+5'".</li><li>Sửa: chạm vào bản xem trước trên điện thoại không còn đổi nhầm Đầy đủ / Gọn.</li></ul>
+<h3 id="v1.4.0-neu-ban-dang-dung-v1-2-0">Nếu bạn đang dùng v1.2.0</h3>
+<p>v1.4.0 gồm luôn mọi thứ của bản trước đó (chưa phát hành rộng):</p>
+<ul><li><strong>Bong bóng tốc độ từ Waze Mod V14+</strong>, nổi trên app đang cast: biển giới hạn + tốc độ, tới 3 cảnh báo (camera có thanh đếm ngược, cảnh sát, kẹt xe, nguy hiểm, đổi tốc độ…), hướng rẽ, làn đường, vùng tốc độ trung bình. Hai kiểu <strong>Dọc</strong> (chữ L) / <strong>Ngang</strong> (dải mỏng), <strong>Đầy đủ</strong> / <strong>Gọn</strong>, kéo tới đâu nằm đó, chạm để đổi Đầy đủ / Gọn.</li><li><strong>Chia đôi / chia 3 / cửa sổ nổi mát máy hơn</strong>: app trong ô nhỏ vẽ đúng cỡ ô (trình duyệt phát video ở ô chia đôi tốn ít hơn khoảng 20% CPU). Riêng Waze vẫn dùng cách cũ.</li><li><strong>Menu ⚙ trên xe</strong> có mục <strong>Bong bóng tốc độ: Tắt / Dọc / Ngang</strong>; app điện thoại gọn hơn.</li><li>Kiểm tra bản mới qua trang chủ NTV CarCast thay vì GitHub.</li></ul>
+<h2 id="v1.4.0-cap-nhat-tu-v1-2-0-v1-3-0">Cập nhật từ v1.2.0 / v1.3.0</h2>
+<ol><li>Tải <strong>NTV-CarCast-v1.4.0.apk</strong> bằng nút <strong>Tải APK</strong> của bản này.</li><li>Cài đè lên bản cũ, <strong>không cần gỡ</strong> (cài đặt cũ vẫn còn):<pre><code class="lang-bash">adb install -r -i com.android.vending NTV-CarCast-v1.4.0.apk</code></pre>
+<p>Hoặc cài bằng KingInstaller như lần đầu.</p></li><li>Mở <strong>LSPosed</strong> xem NTV CarCast vẫn tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại.</strong></li></ol>
+<h2 id="v1.4.0-luu-y">Lưu ý</h2>
+<ul><li>Bong bóng, thẻ media và báo cáo cần <strong>Waze Mod V14+</strong> hoặc <strong>Vietmap Live</strong> đang chạy (chạy nền được). Waze chính thức từ Play không có dữ liệu cho app khác.</li><li>Vietmap Live đọc từ widget của Vietmap, nên số có thể trễ khoảng 1 giây. Đã thử với Vietmap Live 3.4.3; bản Vietmap khác có thể đổi widget.</li><li>Đã thử trên Desktop Head Unit với Galaxy Z Flip3, dùng vị trí giả lập. Chưa thử trên xe thật.</li><li><strong>Không thao tác trên app khi đang lái xe.</strong></li></ul>
+<h2 id="v1.4.0-yeu-cau">Yêu cầu</h2>
+<div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Bong bóng / thẻ media / báo cáo</td><td>Waze Mod V14+ hoặc Vietmap Live 3.4+</td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Desktop Head Unit · Android Auto 17.8</td></tr></tbody></table></div>
+<h2 id="v1.4.0-kiem-tra-file">Kiểm tra file</h2>
+<pre><code>SHA-256  722c005302aefcfcf675df2ee3a5c2e837cb17d7205ab875754d02df57e5e357  NTV-CarCast-v1.4.0.apk</code></pre></div></details><details class="rel box" id="v1.3.0"><summary><span class="v">v1.3.0</span><span class="d">17/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn" href="downloads/NTV-CarCast-v1.3.0.apk" download>Tải APK v1.3.0</a><span class="fine">739 KB</span></div><p>Bản này có <strong>bong bóng tốc độ lấy dữ liệu từ Waze</strong>: tốc độ, biển giới hạn, camera, cảnh báo giao thông, hướng rẽ và làn đường, nổi ngay trên app bạn đang xem trên xe. Ngoài ra <strong>chia đôi / chia 3 mát máy hơn</strong> và <strong>menu gọn hơn</strong>.</p>
+<blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root + LSPosed</strong> như cũ. Cập nhật xong nhớ <strong>khởi động lại điện thoại</strong>.</p></blockquote>
+<h2 id="v1.3.0-co-gi-moi">Có gì mới</h2>
+<h3 id="v1.3.0-1-bong-bong-toc-do-tu-waze-mod">1. Bong bóng tốc độ từ Waze Mod</h3>
+<p>Xem video hay dùng app khác trên xe mà vẫn thấy tốc độ, giới hạn và cảnh báo phía trước, khỏi phải mở bản đồ.</p>
+<div class="table"><table><thead><tr><th>Màn hình dài: chia đôi (video + Google Maps) + bong bóng</th><th>Màn hình thường: video + bong bóng, Google Maps ở bảng bên phải</th></tr></thead><tbody><tr><td><img src="screenshots/1.3.0/car-wide-split-bubble-vertical.png" alt="Chia đôi: YouTube bên trái, Google Maps dẫn đường bên phải, bong bóng tốc độ dọc ở góc dưới" loading="lazy"></td><td><img src="screenshots/1.3.0/car-default-bubble-vertical.png" alt="Video toàn vùng app, bong bóng tốc độ dạng dọc ở góc dưới trái" loading="lazy"></td></tr></tbody></table></div>
+<p><strong>Bong bóng hiện gì:</strong></p>
+<ul><li><strong>Biển giới hạn</strong> và <strong>tốc độ hiện tại</strong>, to, ở bên trái. Chạm giới hạn thì số chuyển <strong>cam</strong>; vượt tốc thì khối tốc độ <strong>nháy đỏ</strong>.</li><li>Tới <strong>3 cảnh báo</strong> gần nhất: camera (có thanh đếm ngược khi còn dưới 500 m), cảnh sát, kẹt xe (kèm số phút chậm thêm), nguy hiểm, <strong>đổi tốc độ sắp tới</strong> (hiện luôn biển mới)…</li><li>Khi dẫn đường: <strong>hướng rẽ</strong> + khoảng cách + tên đường, <strong>làn đường</strong> (làn nên đi tô xanh), vùng <strong>tốc độ trung bình</strong>.</li><li><strong>Sắp tới nút giao</strong> (còn dưới 500 m): rẽ và làn đường được ưu tiên, đứng ngay cạnh khối tốc độ.</li><li><strong>Không cần dẫn đường</strong> vẫn có tốc độ, giới hạn và cảnh báo trên đường đang đi. Chỉ cần Waze đang mở (chạy nền cũng được).</li></ul>
+<p><strong>Hai kiểu bong bóng:</strong></p>
+<div class="table"><table><thead><tr><th>Ngang (dải mỏng, ít che app)</th><th>Dọc (hình chữ L, xem được nhiều hơn)</th></tr></thead><tbody><tr><td><img src="screenshots/1.3.0/car-wide-split-bubble.png" alt="Bong bóng ngang ở mép trên, chia đôi với Google Maps" loading="lazy"></td><td><img src="screenshots/1.3.0/car-default-bubble-vertical.png" alt="Bong bóng dọc ở góc dưới trái" loading="lazy"></td></tr></tbody></table></div>
+<ul><li><strong>Kéo</strong> bong bóng tới chỗ nào cũng được, nhả ra là nằm đúng chỗ đó. Bong bóng tự né nút ⋮ để bạn luôn mở được menu.</li><li><strong>Chạm</strong> bong bóng để đổi <strong>Đầy đủ ↔ Gọn</strong> (Gọn: tốc độ + 1 cảnh báo gần nhất).</li><li>Cỡ Nhỏ / Vừa / Lớn chỉnh trong app trên điện thoại.</li></ul>
+<p><strong>Cách bật</strong> (một lần):</p>
+<ol><li>Cài <strong>Waze Mod V14+</strong> (bản "Đã gỡ AA" cũng được).</li><li>Mở NTV CarCast trên điện thoại → <strong>Bong bóng tốc độ</strong> → chọn <strong>Dọc</strong> hoặc <strong>Ngang</strong>.</li><li>Bấm <strong>Cho phép NTV CarCast đọc dữ liệu Waze Mod</strong> → chọn <strong>Cho phép</strong> trong Waze Mod.</li><li>Khi lái: mở Waze, mở NTV CarCast trên xe là thấy bong bóng.</li></ol>
+<p>
+  <img src="screenshots/1.3.0/phone-bubble.png" width="300" alt="Cài đặt bong bóng trên điện thoại: Tắt / Dọc / Ngang, trạng thái, xem trước, tuỳ chỉnh">
+</p>
+<p>Trên điện thoại có <strong>bản xem trước</strong> dùng dữ liệu thật và dòng trạng thái (xanh: đang nhận dữ liệu; cam: Waze chưa mở). Bong bóng chuyển <strong>xám</strong> khi Waze tắt và tự sáng lại khi Waze chạy.</p>
+<h3 id="v1.3.0-2-chia-doi-chia-3-cua-so-noi-mat-may-hon">2. Chia đôi / chia 3 / cửa sổ nổi mát máy hơn</h3>
+<p>Trước đây app trong ô nhỏ phải vẽ hình to hơn cỡ ô rồi thu nhỏ lại. Giờ app vẽ đúng cỡ ô (bố cục và cỡ chữ không đổi). Đo trên máy: trình duyệt phát video ở ô chia đôi <strong>tốn ít hơn khoảng 20% CPU</strong>.</p>
+<p>Riêng <strong>Waze</strong> vẫn dùng cách cũ, vì Waze tự thoát và mất dẫn đường khi đổi mật độ hiển thị.</p>
+<h3 id="v1.3.0-3-menu-va-cai-dat-gon-hon">3. Menu và cài đặt gọn hơn</h3>
+<ul><li><strong>Menu ⋮ trên xe</strong> có thêm mục <strong>Bong bóng tốc độ: Tắt / Dọc / Ngang</strong>. Chú thích ngắn lại.<p><img src="screenshots/1.3.0/car-menu.png" alt="Menu ⋮ trên xe với mục Bong bóng tốc độ" loading="lazy"></p></li></ul>
+<ul><li><strong>App trên điện thoại</strong>: phần bong bóng đặt ngay dưới Ứng dụng; tuỳ chọn ít dùng gập trong <strong>Tuỳ chỉnh bong bóng</strong>; mô tả trong <strong>Tuỳ chọn khác</strong> ngắn lại.</li><li>Cửa sổ nổi thu nhỏ giờ gọi là <strong>"Thu gọn"</strong> (chữ "bong bóng" chỉ còn dùng cho bong bóng tốc độ).</li></ul>
+<h2 id="v1.3.0-goi-y-de-may-mat">Gợi ý để máy mát</h2>
+<ul><li>Muốn xem tốc độ, camera, hướng rẽ thì dùng <strong>bong bóng</strong> thay vì cast bản đồ Waze lên một ô: Waze chạy nền để lấy dữ liệu nhẹ hơn nhiều so với vẽ bản đồ.</li><li><strong>Chính + bong bóng</strong> là bố cục nhẹ nhất. Chia 3 nặng nhất.</li></ul>
+<h2 id="v1.3.0-cap-nhat-tu-v1-2-0">Cập nhật từ v1.2.0</h2>
+<ol><li>Tải <strong>NTV-CarCast-v1.3.0.apk</strong> bằng nút <strong>Tải APK</strong> của bản này.</li><li>Cài đè lên bản cũ, <strong>không cần gỡ</strong> (cài đặt cũ vẫn còn):<pre><code class="lang-bash">adb install -r -i com.android.vending NTV-CarCast-v1.3.0.apk</code></pre>
+<p>Hoặc cài bằng KingInstaller như lần đầu.</p></li><li>Mở <strong>LSPosed</strong> xem NTV CarCast vẫn tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại.</strong></li></ol>
+<p>Cài lần đầu: xem <a href="guide.html#cai-dat">hướng dẫn trong README</a>.</p>
+<h2 id="v1.3.0-luu-y">Lưu ý</h2>
+<ul><li>Bong bóng cần <strong>Waze Mod V14+</strong>. Waze chính thức từ Play không có dữ liệu cho app khác.</li><li><strong>Vietmap Live</strong>: chưa hỗ trợ (đang làm).</li><li>Đã thử trên Desktop Head Unit với vị trí giả lập. Chưa thử trên xe thật.</li><li><strong>Không thao tác trên app khi đang lái xe.</strong></li></ul>
+<h2 id="v1.3.0-yeu-cau">Yêu cầu</h2>
+<div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Bong bóng tốc độ</td><td>Waze Mod V14+</td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Desktop Head Unit · Android Auto 17.8</td></tr></tbody></table></div>
+<h2 id="v1.3.0-kiem-tra-file">Kiểm tra file</h2>
+<pre><code>SHA-256  ef7e6a2ae4bc1f1bd56525aa010b029c90606d2b7c1825990116e913f37417a3  NTV-CarCast-v1.3.0.apk</code></pre>
+<hr>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel box" id="v1.2.0"><summary><span class="v">v1.2.0</span><span class="d">13/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn" href="downloads/NTV-CarCast-v1.2.0.apk" download>Tải APK v1.2.0</a><span class="fine">655 KB</span></div><p>Bản này có 3 thứ mới: <strong>app chiếm hết màn hình xe</strong>, <strong>cắm cáp là app tự mở</strong>, và <strong>app tự báo khi có bản mới</strong>.</p>
 <blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root + LSPosed</strong> như cũ. Cập nhật xong nhớ <strong>khởi động lại điện thoại</strong>.</p></blockquote>
 <h2 id="v1.2.0-co-gi-moi">Có gì mới</h2>
 <h3 id="v1.2.0-1-toan-man-hinh-bo-bang-ben-phai">1. Toàn màn hình: bỏ bảng bên phải</h3>
@@ -182,7 +274,7 @@ details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summa
 <h2 id="v1.2.0-kiem-tra-file">Kiểm tra file</h2>
 <pre><code>SHA-256  777f664b17cafdb3239e678ccd5b12a0306838a808261986f228d91cf85d60aa  NTV-CarCast-v1.2.0.apk</code></pre>
 <hr>
-<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel" id="v1.1.0"><summary><span class="v">v1.1.0</span><span class="d">13/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn primary small" href="downloads/NTV-CarCast-v1.1.0.apk" download>⬇&nbsp; Tải APK v1.1.0</a><span class="fine">646 KB</span></div><p>Bản này thêm <strong>chia màn hình 2–3 app</strong>, <strong>menu mới chọn bố cục bằng hình</strong>, và sửa lỗi <strong>app nổi bị phóng to sai</strong>.</p>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel box" id="v1.1.0"><summary><span class="v">v1.1.0</span><span class="d">13/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn" href="downloads/NTV-CarCast-v1.1.0.apk" download>Tải APK v1.1.0</a><span class="fine">646 KB</span></div><p>Bản này thêm <strong>chia màn hình 2–3 app</strong>, <strong>menu mới chọn bố cục bằng hình</strong>, và sửa lỗi <strong>app nổi bị phóng to sai</strong>.</p>
 <blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root (Magisk / KernelSU / APatch) + LSPosed</strong>. Sau khi cập nhật phải <strong>khởi động lại điện thoại</strong> (xem mục "Cập nhật từ v1.0.0").</p></blockquote>
 <h2 id="v1.1.0-anh-chup-man-hinh">Ảnh chụp màn hình</h2>
 <div class="table"><table><thead><tr><th>Chính + nổi</th><th>Thu thành bong bóng</th></tr></thead><tbody><tr><td><img src="screenshots/1.1.0/car-popup.png" alt="Video toàn màn hình, Google Maps dẫn đường trong cửa sổ nổi" loading="lazy"></td><td><img src="screenshots/1.1.0/car-bubble.png" alt="Cửa sổ nổi thu thành bong bóng" loading="lazy"></td></tr><tr><td><strong>Chia đôi</strong></td><td><strong>Chia 3</strong></td></tr><tr><td><img src="screenshots/1.1.0/car-split-2.png" alt="Chia đôi: video + Google Maps" loading="lazy"></td><td><img src="screenshots/1.1.0/car-split-3.png" alt="Chia 3: video + 2 app dẫn đường" loading="lazy"></td></tr></tbody></table></div>
@@ -191,7 +283,7 @@ details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summa
 <p><strong>Ứng dụng trên điện thoại</strong> (thiết kế lại)</p>
 <p>
   <img src="screenshots/1.1.0/phone-main.png" width="280" alt="Ứng dụng trên điện thoại: bố cục, ứng dụng từng ô, DPI">
-  &amp;nbsp;
+  &nbsp;
   <img src="screenshots/1.1.0/phone-options.png" width="280" alt="Ứng dụng trên điện thoại khi mở Tuỳ chọn khác">
 </p>
 <h2 id="v1.1.0-moi">Mới</h2>
@@ -211,7 +303,7 @@ details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summa
 <h2 id="v1.1.0-kiem-tra-file">Kiểm tra file</h2>
 <pre><code>SHA-256  2944658a7a53e21c44ff28a454bf90e5b7fddbc08d31cdfcdb140450f9bb9c14  NTV-CarCast-v1.1.0.apk</code></pre>
 <hr>
-<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel" id="v1.0.0"><summary><span class="v">v1.0.0</span><span class="d">10/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn primary small" href="downloads/NTV-CarCast-v1.0.0.apk" download>⬇&nbsp; Tải APK v1.0.0</a><span class="fine">622 KB</span></div><p>Bản chính thức đầu tiên, tập trung vào <strong>ổn định và mát máy</strong>. Bàn phím và giọng nói riêng của NTV CarCast đã được gỡ: app được cast đã có sẵn tìm kiếm của nó (🎤 của Google Maps, bàn phím của Brave…), dùng trực tiếp trên màn hình xe.</p>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel box" id="v1.0.0"><summary><span class="v">v1.0.0</span><span class="d">10/10/2026</span></summary><div class="body prose"><div class="dl"><a class="btn" href="downloads/NTV-CarCast-v1.0.0.apk" download>Tải APK v1.0.0</a><span class="fine">622 KB</span></div><p>Bản chính thức đầu tiên, tập trung vào <strong>ổn định và mát máy</strong>. Bàn phím và giọng nói riêng của NTV CarCast đã được gỡ: app được cast đã có sẵn tìm kiếm của nó (🎤 của Google Maps, bàn phím của Brave…), dùng trực tiếp trên màn hình xe.</p>
 <blockquote><p>⚠️ Vẫn cần <strong>điện thoại đã root (Magisk / KernelSU / APatch) + LSPosed</strong>.</p></blockquote>
 <h2 id="v1.0.0-moi">Mới</h2>
 <ul><li><strong>Phím của xe điều khiển app</strong>: D-pad, núm xoay và nút OK của xe gửi thẳng vào app đang cast. Nút Back của xe vẫn hoạt động như Android Auto. Bật/tắt trong cài đặt.</li><li><strong>Tự thu cửa sổ nổi thành bong bóng</strong> sau 5 phút không chạm, để đỡ tốn pin. Bật/tắt trong cài đặt.</li><li><strong>Tự tắt màn hình điện thoại khi máy quá nóng</strong>: tối đa 1 lần mỗi 10 phút. Bật/tắt trong cài đặt.</li><li><strong>"Mở lại <app>"</strong> trong menu ⋮. App đang cast không còn hiện trong Recents của điện thoại, nên bấm "Đóng tất cả" trên điện thoại không làm mất màn hình trên xe.</li></ul>
@@ -219,7 +311,7 @@ details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summa
 <ul><li><strong>Gỡ bàn phím xe và giọng nói của NTV CarCast</strong>, gồm nút ⌨ / 🎤, lịch sử tìm kiếm và mục cài đặt liên quan. Hãy dùng tìm kiếm / giọng nói có sẵn trong app (vd. 🎤 trong Google Maps).<ul><li>Bàn phím trên màn hình ảo không ổn định: Samsung Keyboard bị crash, Gboard bị treo.</li><li>Giọng nói không tin cậy được: Android chặn micro khi app chạy nền, và Google Maps bỏ qua lệnh khi điện thoại đang khoá.</li></ul></li><li><strong>Không còn xin quyền micro.</strong> App chỉ cần quyền thông báo.</li><li>Danh sách chọn app trên xe không còn ô gõ chữ; chạm chọn trực tiếp trong danh sách.</li><li>Lệnh root chạy ổn định hơn, không còn lỗi lệnh mở app thỉnh thoảng thất bại.</li></ul>
 <h2 id="v1.0.0-cap-nhat-tu-v0-2-0">Cập nhật từ v0.2.0</h2>
 <ol><li>Cài đè: <code>adb install -r -i com.android.vending NTV-CarCast-v1.0.0.apk</code>. Cùng package và cùng chữ ký, nên không cần gỡ bản cũ; cài đặt của bạn được giữ nguyên.</li><li>Mở <strong>LSPosed</strong> và kiểm tra NTV CarCast vẫn tích <strong>System Framework</strong> + <strong>Android Auto</strong>.</li><li><strong>Khởi động lại điện thoại.</strong></li></ol>
-<p>Cài mới từ đầu: xem <a href="../README.md">README</a>.</p>
+<p>Cài mới từ đầu: xem <a href="guide.html#cai-dat">README</a>.</p>
 <h2 id="v1.0.0-yeu-cau">Yêu cầu</h2>
 <div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Desktop Head Unit</td></tr></tbody></table></div>
 <h2 id="v1.0.0-gioi-han-da-biet">Giới hạn đã biết</h2>
@@ -227,13 +319,13 @@ details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summa
 <h2 id="v1.0.0-kiem-tra-file">Kiểm tra file</h2>
 <pre><code>SHA-256  5cd75f3fc0bf2af3d8f4aabe3a2b9a7826d9f080d41502aef1ee872b19fcc007  NTV-CarCast-v1.0.0.apk</code></pre>
 <hr>
-<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel" id="v0.2.0"><summary><span class="v">v0.2.0</span><span class="d">10/10/2026</span></summary><div class="body prose"><p>Bản phát hành đầu tiên của <strong>NTV CarCast</strong>: đưa một ứng dụng trên điện thoại (Google Maps, VietMap, Waze, trình duyệt, NewPipe…) lên màn hình Android Auto và dùng như app thật.</p>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details><details class="rel box" id="v0.2.0"><summary><span class="v">v0.2.0</span><span class="d">10/10/2026</span></summary><div class="body prose"><p>Bản phát hành đầu tiên của <strong>NTV CarCast</strong>: đưa một ứng dụng trên điện thoại (Google Maps, VietMap, Waze, trình duyệt, NewPipe…) lên màn hình Android Auto và dùng như app thật.</p>
 <blockquote><p>⚠️ Cần <strong>điện thoại đã root (Magisk / KernelSU / APatch) + LSPosed</strong>. Không dùng được trên máy chưa root.</p></blockquote>
 <h2 id="v0.2.0-co-gi-trong-ban-nay">Có gì trong bản này</h2>
 <ul><li><strong>Cast 1 ứng dụng</strong> lên Android Auto. App nằm ở vùng ứng dụng (~2/3 màn hình); dock và bảng thông báo, nhạc, Waze của Android Auto vẫn như bình thường.</li><li><strong>Chạm theo thời gian thực</strong>: kéo bản đồ theo ngón tay, zoom 2 ngón, giữ lâu.</li><li><strong>Tìm kiếm trên xe</strong>: ⌨ bàn phím xe hoặc 🎤 giọng nói (Tiếng Việt / English). Gõ thẳng vào ô tìm kiếm của app (hỗ trợ tiếng Việt có dấu), hoặc gửi <strong>Tìm địa điểm</strong> / <strong>Dẫn đường</strong> cho app bản đồ.</li><li><strong>Tắt màn hình điện thoại vẫn chạy</strong>: hình và cảm ứng trên xe không bị ảnh hưởng (Android 12+).</li><li><strong>Không mất trạng thái</strong> khi chuyển sang màn hình Android Auto khác rồi quay lại (vd. Google Maps vẫn giữ dẫn đường).</li><li><strong>Ứng dụng nổi</strong>: chạy thêm một app đè lên app chính dạng cửa sổ (kéo, đổi kích thước) hoặc bong bóng (tạm dừng, không tốn pin); đổi chỗ với app chính bằng 1 chạm.</li><li><strong>Chuyển nhanh</strong> giữa các app dùng gần đây từ menu ⋮ trên xe.</li><li><strong>Mát máy, đỡ tốn pin</strong>: giới hạn 30 fps (Android 14+, tắt được), tạm dừng vẽ khi mở menu cài đặt, cảnh báo khi máy nóng và tự thu ứng dụng nổi khi máy quá nóng.</li><li>Giao diện <strong>Tiếng Việt / English</strong>.</li></ul>
 <h2 id="v0.2.0-cai-dat-nhanh">Cài đặt nhanh</h2>
 <ol><li>Cài APK, đánh dấu là cài từ Play Store để Android Auto nhận app: <code>adb install -i com.android.vending NTV-CarCast-v0.2.0.apk</code> (hoặc dùng KingInstaller).</li><li><strong>LSPosed → Modules → NTV CarCast</strong>: bật module, tích <strong>System Framework</strong> + <strong>Android Auto</strong>, rồi <strong>khởi động lại máy</strong>.</li><li>Mở NTV CarCast trên điện thoại → Magisk hỏi quyền root → <strong>Cho phép vĩnh viễn</strong>.</li><li>Chọn <strong>Ứng dụng chính</strong> (vd. Google Maps) → cắm xe → mở <strong>NTV CarCast</strong> trên màn hình Android Auto.</li></ol>
-<p>Hướng dẫn chi tiết và xử lý sự cố: xem <a href="../README.md">README</a>.</p>
+<p>Hướng dẫn chi tiết và xử lý sự cố: xem <a href="guide.html#cai-dat">README</a>.</p>
 <h2 id="v0.2.0-yeu-cau">Yêu cầu</h2>
 <div class="table"><table><tbody><tr><td>Android</td><td>10 trở lên (tắt màn hình khi cast: 12 trở lên)</td></tr><tr><td>Root</td><td>Magisk / KernelSU / APatch</td></tr><tr><td>Xposed</td><td>LSPosed, scope <code>System Framework</code> + <code>Android Auto</code></td></tr><tr><td>Đã thử trên</td><td>Galaxy Z Flip3 · Android 15 · Android Auto 17.8 · Desktop Head Unit</td></tr></tbody></table></div>
 <h2 id="v0.2.0-gioi-han-da-biet">Giới hạn đã biết</h2>
@@ -243,14 +335,17 @@ details.rel .dl .btn{width:auto}details.rel .body,details.qa .a,details.qa>summa
 <h2 id="v0.2.0-kiem-tra-file">Kiểm tra file</h2>
 <pre><code>SHA-256  cf4ccf5e92010599244854d7fae9c1de47cc6168131c0a5827c609d86a697b6f  NTV-CarCast-v0.2.0.apk</code></pre>
 <hr>
-<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details></div>
+<p>Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.</p></div></details>
 </div></main>
 
-<footer><div class="wrap">
-<span>NTV CarCast v1.2.0 · Sử dụng có rủi ro; can thiệp Android Auto có thể vi phạm điều khoản của Google.
-<b>Không thao tác khi đang lái xe.</b></span>
-<span><a href="guide.html">Hướng dẫn</a> · <a href="releases.html">Phiên bản</a> ·
-<a href="https://forms.gle/XQfBQJuNHZzoBCHL6" target="_blank" rel="noopener">Báo lỗi / Góp ý</a></span>
+<footer class="gutter"><div class="wrap">
+<p><b>NTV CarCast</b> · bản 1.5.0</p>
+<nav aria-label="Liên kết cuối trang"><a href="guide.html">Hướng dẫn</a><a href="releases.html">Phiên bản</a>
+<a href="index.html#bang-gia">Bảng giá</a><a href="dieu-khoan.html">Điều khoản và quyền riêng tư</a>
+<a href="https://forms.gle/XQfBQJuNHZzoBCHL6" target="_blank" rel="noopener">Góp ý</a></nav>
+<p>Không thao tác app khi đang lái xe. Tuân thủ luật giao thông và luôn quan sát đường.</p>
+<p>Sử dụng có rủi ro: app can thiệp vào Android Auto, việc này có thể trái điều khoản của Google. NTV CarCast không
+liên quan và không được Google, Android Auto, Waze, Vietmap, nhóm phát triển Waze Mod, Magisk hay LSPosed bảo trợ.</p>
 </div></footer>
 </body>
 </html>

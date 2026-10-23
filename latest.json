@@ -1,7 +1,7 @@
 {
-  "tag": "v1.2.0",
-  "version": "1.2.0",
-  "apk": "downloads/NTV-CarCast-v1.2.0.apk",
-  "sha256": "777f664b17cafdb3239e678ccd5b12a0306838a808261986f228d91cf85d60aa",
-  "notes": "releases.html#v1.2.0"
+  "tag": "v1.5.0",
+  "version": "1.5.0",
+  "apk": "downloads/NTV-CarCast-v1.5.0.apk",
+  "sha256": "8eb1889ade3fe3dca1a3cf3f188bcc3119370e9b8d99cbb3c35b4ad93101526b",
+  "notes": "releases.html#v1.5.0"
 }
